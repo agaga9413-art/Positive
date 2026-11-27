@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>국장 레이더 · 중장기 시그널</title>
+<meta name="description" content="국장 중장기 종목의 추세·밸류에이션·배당·RSI 스코어와 시나리오 차트, 평단가 계산기를 한 화면에서. 참고용 시뮬레이터이며 투자 권유가 아닙니다.">
+<meta name="theme-color" content="#0d1014" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f4f6f9" media="(prefers-color-scheme: light)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="국장 레이더">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:title" content="국장 레이더 · 중장기 시그널">
+<meta property="og:description" content="중장기 스코어카드 · 시나리오 차트 · 평단가 계산기 (참고용 시뮬레이터)">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAF2UlEQVR4nO3dP25TQRCA8XFEi0RBilwiFRfgBinhAkgpqNJTpKeiQOICUHIDLkDFJShIESkHCAVyeInXb2f37b+Z/X5dwLIt8TEZPz/77WQQz1+8vO/9HJDv7vZm1/s5iIh0exIE7FuvwJs+KBHPqWXc1R+IiLFUO+5qd07IWFMr7OJ3SshIUTrsk5J3RsxIVbqZIv87CBkllJjWmyc0MaOUEi1tCpqYUdrWprJGPCGjhZwVJHlCEzNayWktKWhiRmupzamDJmb0ktJe0ePQQG+qoJnO6E3bYDRoYsYoNC2uBk3MGE2sSXZouHI0aKYzRrXWZjBoYsbojjXKygFXDoJmOsOKUKtMaLjyKGimM6x52iwTGq4QNFx5CJp1A1Yt22VCwxWChisnIqwbsG/fMBMarhA0XCFouLJjf4YnTGi4QtBwhaDhCkHDFYKGKwQNVwgarhA0XCFouELQcIWg4cqz3k8Atn34+ufgz67fnnZ4Jv8woZEtFPPan7dA0MgSi7ZX1ASNZNpYe0RN0M6cX9WNKDXS1lETNFwhaLhC0HCFoKHW83CcFkFDJTfm1m+yEDSirMQsQtCIsBSzCEFjRSzmY9H2PJeDk5MQpI25Z7whBI1HNCvGaBEvsXLggfWYRfhuOxfWzt/49VEXoIeYRQjaPM3JSLGoc1/8jYiVwzDtmXVrt/MUswhBm5V6mmjo9t5iFuEox5S87MshTOjJeI5ZhKCn4j1mEVaOaVy8Wv976yHvMaEnMEvMIgTt3kwxi7ByuBULWcRfzCJMaJdmjVmEoN2ZOWYRVg5XZtuXQ5jQhf1+/abL48Zi/v6zzfPojaAdIOb/WDkM0+zLM8UswoQ2i5jDCNogzTkZM8YswsphTizmWUPeY0IbQsxxBG0EMeuwcgyOfTkNE3pgxJyOoAdFzHkIekCaT2MTcxg7dAFPz99Y/nz245v6fmb4zF9tTOiNYicjaU9WIuYyCHoDbayx2xFzOawcmVJPE/39+s3B+qH9dnxi1iPoTpjKdbBydEDM9TChG2LFqI+gG/n87lP0NoS8HStHA8TcDhO6Ik3IIsRcEkFXwlTug5WjAmLux92EPr/6o77yU2msGP25C7oXpvIYWDkK0MR8+eV90cdM/S3U67dWa0zoDbQrRumY9359PC1ynUJPCDpTj6kcEot6pphFCDqL5i3sFjHvLaPt+aJ4BASdQHsuRsuY8RhBK402lRHGUQ4FYraDCb2CFcMegj6CqWwTK0cAMdvlYkI/PQ67/DnlEFbKJ0ouO11LBevMBx17p0xzXNbTR6NmPgYtYjxozdu++9uF/qG1IYvYiBmGd2htzMdunxIz7DA9oXOkhsxktmWaoC9eiVywYrjnPmjN5c+WCNk2t0ET8pzcBU3Ic3MTdGrIIsTskfmge4V89uNb0lfqpnyTP/Ltnr94ed/7SeTIOY5cYyJroibmdsxN6JyQa15gJzapibktU0GnxtzqSlHLaEPf1I92TAQ9asgYz9BBEzJSDRk0ISPXUEETMrYaIuicM+BSTx/FHMydD827e1gzRNCaSK/fnhIzooZYOdZYi5hj0H0NMaFFDsNlIiPHcBOaiLHFMBNahJix3VBBA1uZDZprjCDEbNAi+kiJeR6mgxaJx0rMczH7iZVjZr/GyOzMT2hgiaDhCkHDFYKGKyd3tze73k8CKOHu9mbHhIYrBA1XdiIi3o5FY04PKwd7NKzbN8zKAVcIGq48BM3aAauW7TKh4QpBw5VHQbN2wJqnzTKh4cpB0ExpWBFqlQkNV4JBM6UxumONHp3QRI1RrbXJygFXVoNmSmM0sSajE5qoMQpNi6qVg6jRm7ZBdmi4og6aKY1eUtpLmtBEjdZSm0teOYgareS0tilOPlyLGrYMzU0vCpnWKG1rU5uPchA1SinRUtEYWUGQo+RQLHocmmmNVKWbqRYg0xprag2/6hOVsLFU+7d40xWBuOfUchXttvMSt2+9Xk8N8yKOwG0b5YDAX01OH5DBb/SWAAAAAElFTkSuQmCC">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAF2UlEQVR4nO3dP25TQRCA8XFEi0RBilwiFRfgBinhAkgpqNJTpKeiQOICUHIDLkDFJShIESkHCAVyeInXb2f37b+Z/X5dwLIt8TEZPz/77WQQz1+8vO/9HJDv7vZm1/s5iIh0exIE7FuvwJs+KBHPqWXc1R+IiLFUO+5qd07IWFMr7OJ3SshIUTrsk5J3RsxIVbqZIv87CBkllJjWmyc0MaOUEi1tCpqYUdrWprJGPCGjhZwVJHlCEzNayWktKWhiRmupzamDJmb0ktJe0ePQQG+qoJnO6E3bYDRoYsYoNC2uBk3MGE2sSXZouHI0aKYzRrXWZjBoYsbojjXKygFXDoJmOsOKUKtMaLjyKGimM6x52iwTGq4QNFx5CJp1A1Yt22VCwxWChisnIqwbsG/fMBMarhA0XCFouLJjf4YnTGi4QtBwhaDhCkHDFYKGKwQNVwgarhA0XCFouELQcIWg4cqz3k8Atn34+ufgz67fnnZ4Jv8woZEtFPPan7dA0MgSi7ZX1ASNZNpYe0RN0M6cX9WNKDXS1lETNFwhaLhC0HCFoKHW83CcFkFDJTfm1m+yEDSirMQsQtCIsBSzCEFjRSzmY9H2PJeDk5MQpI25Z7whBI1HNCvGaBEvsXLggfWYRfhuOxfWzt/49VEXoIeYRQjaPM3JSLGoc1/8jYiVwzDtmXVrt/MUswhBm5V6mmjo9t5iFuEox5S87MshTOjJeI5ZhKCn4j1mEVaOaVy8Wv976yHvMaEnMEvMIgTt3kwxi7ByuBULWcRfzCJMaJdmjVmEoN2ZOWYRVg5XZtuXQ5jQhf1+/abL48Zi/v6zzfPojaAdIOb/WDkM0+zLM8UswoQ2i5jDCNogzTkZM8YswsphTizmWUPeY0IbQsxxBG0EMeuwcgyOfTkNE3pgxJyOoAdFzHkIekCaT2MTcxg7dAFPz99Y/nz245v6fmb4zF9tTOiNYicjaU9WIuYyCHoDbayx2xFzOawcmVJPE/39+s3B+qH9dnxi1iPoTpjKdbBydEDM9TChG2LFqI+gG/n87lP0NoS8HStHA8TcDhO6Ik3IIsRcEkFXwlTug5WjAmLux92EPr/6o77yU2msGP25C7oXpvIYWDkK0MR8+eV90cdM/S3U67dWa0zoDbQrRumY9359PC1ynUJPCDpTj6kcEot6pphFCDqL5i3sFjHvLaPt+aJ4BASdQHsuRsuY8RhBK402lRHGUQ4FYraDCb2CFcMegj6CqWwTK0cAMdvlYkI/PQ67/DnlEFbKJ0ouO11LBevMBx17p0xzXNbTR6NmPgYtYjxozdu++9uF/qG1IYvYiBmGd2htzMdunxIz7DA9oXOkhsxktmWaoC9eiVywYrjnPmjN5c+WCNk2t0ET8pzcBU3Ic3MTdGrIIsTskfmge4V89uNb0lfqpnyTP/Ltnr94ed/7SeTIOY5cYyJroibmdsxN6JyQa15gJzapibktU0GnxtzqSlHLaEPf1I92TAQ9asgYz9BBEzJSDRk0ISPXUEETMrYaIuicM+BSTx/FHMydD827e1gzRNCaSK/fnhIzooZYOdZYi5hj0H0NMaFFDsNlIiPHcBOaiLHFMBNahJix3VBBA1uZDZprjCDEbNAi+kiJeR6mgxaJx0rMczH7iZVjZr/GyOzMT2hgiaDhCkHDFYKGKyd3tze73k8CKOHu9mbHhIYrBA1XdiIi3o5FY04PKwd7NKzbN8zKAVcIGq48BM3aAauW7TKh4QpBw5VHQbN2wJqnzTKh4cpB0ExpWBFqlQkNV4JBM6UxumONHp3QRI1RrbXJygFXVoNmSmM0sSajE5qoMQpNi6qVg6jRm7ZBdmi4og6aKY1eUtpLmtBEjdZSm0teOYgareS0tilOPlyLGrYMzU0vCpnWKG1rU5uPchA1SinRUtEYWUGQo+RQLHocmmmNVKWbqRYg0xprag2/6hOVsLFU+7d40xWBuOfUchXttvMSt2+9Xk8N8yKOwG0b5YDAX01OH5DBb/SWAAAAAElFTkSuQmCC">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIuq1reyepSDroIjsnbTrjZQgwrcg7KSR7J6l6riwIOyLnOq3uOuEkCIsICJzaG9ydF9uYW1lIjogIuq1reyepSDroIjsnbTrjZQiLCAic3RhcnRfdXJsIjogIi4vIiwgInNjb3BlIjogIi4vIiwgImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsICJvcmllbnRhdGlvbiI6ICJwb3J0cmFpdCIsICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwYjBlMTIiLCAidGhlbWVfY29sb3IiOiAiIzBiMGUxMiIsICJsYW5nIjogImtvIiwgImRlc2NyaXB0aW9uIjogIuq1reyepSDspJHsnqXquLAg7Iqk7L2U7Ja07Lm065OcIMK3IOyLnOuCmOumrOyYpCDssKjtirggwrcg7Y+J64uo6rCAIOqzhOyCsOq4sCAo7LC46rOg7JqpKSIsICJpY29ucyI6IFt7InNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUxRQUFBQzBDQVlBQUFBOXpRWXlBQUFGMlVsRVFWUjRuTzNkUDI1VFFSQ0E4WEZFaTBSQmlsd2lGUmZnQmluaEFrZ3BxTkpUcEtlaVFPSUNVSElETGtERkpTaElFU2tIQ0FWeWVJblhiMmYzN2IrWi9YNWR3TEl0OFRFWlB6Lzc3V1FRejErOHZPLzlISkR2N3ZabTEvczVpSWgwZXhJRTdGdXZ3SnMrS0JIUHFXWGMxUitJaUxGVU8rNXFkMDdJV0ZNcjdPSjNTc2hJVVRyc2s1SjNSc3hJVmJxWkl2ODdDQmtsbEpqV215YzBNYU9VRWkxdENwcVlVZHJXcHJKR1BDR2poWndWSkhsQ0V6TmF5V2t0S1doaVJtdXB6YW1ESm1iMGt0SmUwZVBRUUcrcW9Kbk82RTNiWURSb1lzWW9OQzJ1QmszTUdFMnNTWFpvdUhJMGFLWXpSclhXWmpCb1lzYm9qalhLeWdGWERvSm1Pc09LVUt0TWFManlLR2ltTTZ4NTJpd1RHcTRRTkZ4NUNKcDFBMVl0MjJWQ3d4V0NoaXNuSXF3YnNHL2ZNQk1hcmhBMFhDRm91TEpqZjRZblRHaTRRdEJ3aGFEaENrSERGWUtHS3dRTlZ3Z2FyaEEwWENGb3VFTFFjSVdnNGNxejNrOEF0bjM0K3VmZ3o2N2Zublo0SnY4d29aRXRGUFBhbjdkQTBNZ1NpN1pYMUFTTlpOcFllMFJOME02Y1g5V05LRFhTMWxFVE5Gd2hhTGhDMEhDRm9LSFc4M0NjRmtGREpUZm0xbSt5RURTaXJNUXNRdENJc0JTekNFRmpSU3ptWTlIMlBKZURrNU1RcEkyNVo3d2hCSTFITkN2R2FCRXZzWExnZ2ZXWVJmaHVPeGZXenQvNDlWRVhvSWVZUlFqYVBNM0pTTEdvYzEvOGpZaVZ3ekR0bVhWcnQvTVVzd2hCbTVWNm1tam85dDVpRnVFb3g1Uzg3TXNoVE9qSmVJNVpoS0NuNGoxbUVWYU9hVnk4V3Y5NzZ5SHZNYUVuTUV2TUlnVHQza3d4aTdCeXVCVUxXY1JmekNKTWFKZG1qVm1Fb04yWk9XWVJWZzVYWnR1WFE1alFoZjErL2FiTDQ4WmkvdjZ6emZQb2phQWRJT2IvV0RrTTArekxNOFVzd29RMmk1akRDTm9nelRrWk04WXN3c3BoVGl6bVdVUGVZMEliUXN4eEJHMEVNZXV3Y2d5T2ZUa05FM3BneEp5T29BZEZ6SGtJZWtDYVQyTVRjeGc3ZEFGUHo5OVkvbnoyNDV2NmZtYjR6Rjl0VE9pTllpY2phVTlXSXVZeUNIb0RiYXl4MnhGek9hd2NtVkpQRS8zOStzM0IrcUg5ZG54aTFpUG9UcGpLZGJCeWRFRE05VENoRzJMRnFJK2dHL244N2xQME5vUzhIU3RIQThUY0RoTzZJazNJSXNSY0VrRlh3bFR1ZzVXakFtTHV4OTJFUHIvNm83N3lVMm1zR1AyNUM3b1hwdklZV0RrSzBNUjgrZVY5MGNkTS9TM1U2N2RXYTB6b0RiUXJSdW1ZOTM1OVBDMXluVUpQQ0RwVGo2a2NFb3Q2cHBoRkNEcUw1aTNzRmpIdkxhUHQrYUo0QkFTZFFIc3VSc3VZOFJoQks0MDJsUkhHVVE0RllyYURDYjJDRmNNZWdqNkNxV3dUSzBjQU1kdmxZa0kvUFE2Ny9EbmxFRmJLSjBvdU8xMUxCZXZNQngxN3AweHpYTmJUUjZObVBnWXRZanhvemR1Kys5dUYvcUcxSVl2WWlCbUdkMmh0ek1kdW54SXo3REE5b1hPa2hzeGt0bVdhb0M5ZWlWeXdZcmpuUG1qTjVjK1dDTmsydDBFVDhwemNCVTNJYzNNVGRHcklJc1Rza2ZtZ2U0Vjg5dU5iMGxmcXBueVRQL0x0bnI5NGVkLzdTZVRJT1k1Y1l5SnJvaWJtZHN4TjZKeVFhMTVnSnphcGlia3RVMEdueHR6cVNsSExhRVBmMUk5MlRBUTlhc2dZejlCQkV6SlNEUmswSVNQWFVFRVRNcllhSXVpY00rQlNUeC9GSE15ZEQ4MjdlMWd6Uk5DYVNLL2ZuaEl6b29aWU9kWllpNWhqMEgwTk1hRkZEc05sSWlQSGNCT2FpTEhGTUJOYWhKaXgzVkJCQTF1WkRacHJqQ0RFYk5BaStraUplUjZtZ3hhSngwck1jekg3aVpWalpyL0d5T3pNVDJoZ2lhRGhDa0hERllLR0t5ZDN0emU3M2s4Q0tPSHU5bWJIaElZckJBMVhkaUlpM281RlkwNFBLd2Q3Tkt6Yk44ektBVmNJR3E0OEJNM2FBYXVXN1RLaDRRcEJ3NVZIUWJOMndKcW56VEtoNGNwQjBFeHBXQkZxbFFrTlY0SkJNNlV4dW1PTkhwM1FSSTFScmJYSnlnRlhWb05tU21NMHNTYWpFNXFvTVFwTmk2cVZnNmpSbTdaQmRtaTRvZzZhS1kxZVV0cExtdEJFamRaU20wdGVPWWdhcmVTMHRpbE9QbHlMR3JZTXpVMHZDcG5XS0cxclU1dVBjaEExU2luUlV0RVlXVUdRbytSUUxIb2NtbW1OVktXYnFSWWcweHByYWcyLzZoT1ZzTEZVKzdkNDB4V0J1T2ZVY2hYdHR2TVN0Mis5WGs4Tjh5S093RzBiNVlEQVgwMU9INURCYi9TV0FBQUFBRWxGVGtTdVFtQ0MiLCAic2l6ZXMiOiAiMTgweDE4MCIsICJ0eXBlIjogImltYWdlL3BuZyIsICJwdXJwb3NlIjogImFueSJ9XX0=">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#0b0e12; --bg2:#0f1318; --card:#151b23; --card2:#1b222c; --line:#242d39;
+  --text:#eef2f7; --sub:#8f9dad; --dim:#6b7889; --accent:#3b82f6; --accent-soft:rgba(59,130,246,.14);
+  --up:#f4516c; --down:#4d8df7; --ok:#2ac47a; --warn:#f3a33a; --shadow:0 10px 30px rgba(0,0,0,.35);
+  --chip:#1b222c;
+}
+[data-theme="light"]{
+  --bg:#f2f4f7; --bg2:#eef1f5; --card:#ffffff; --card2:#f6f8fa; --line:#e6e9ee;
+  --text:#111827; --sub:#6b7684; --dim:#8b95a1; --accent:#3182f6; --accent-soft:rgba(49,130,246,.10);
+  --up:#e5344f; --down:#2f6fe0; --ok:#12935c; --warn:#c97a10; --shadow:0 8px 24px rgba(16,24,40,.08);
+  --chip:#ffffff;
+}
+html,body{margin:0;padding:0}
+body{
+  background:radial-gradient(120% 60% at 50% -10%, var(--bg2) 0%, var(--bg) 60%) fixed, var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Malgun Gothic","Noto Sans KR",sans-serif;
+  font-size:15px; line-height:1.45; letter-spacing:-.01em;
+  -webkit-text-size-adjust:100%;
+  word-break:keep-all; overflow-wrap:break-word;
+  padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
+  transition:background .2s,color .2s;
+}
+.wrap{max-width:440px;margin:0 auto;padding:0 14px 48px}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input,textarea{font:inherit;color:inherit}
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.02em}
+
+/* top */
+.top{display:flex;align-items:center;justify-content:space-between;padding:16px 2px 10px}
+.brand{display:flex;align-items:baseline;gap:8px}
+.brand b{font-size:19px;letter-spacing:-.03em}
+.brand span{font-size:11.5px;color:var(--sub);font-weight:600}
+.iconbtn{width:38px;height:38px;border-radius:12px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;font-size:16px}
+
+/* market */
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin:12px 0;box-shadow:var(--shadow)}
+.card-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.card-h h2{font-size:15px}
+.card-h .hint{font-size:11px;color:var(--dim);font-weight:600}
+.mkt{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mkt-item{background:var(--card2);border-radius:14px;padding:11px 12px}
+.mkt-item .nm{font-size:11.5px;color:var(--sub);font-weight:700}
+.mkt-item .v{font-size:19px;font-weight:800;margin-top:2px;letter-spacing:-.03em}
+.mkt-item .c{font-size:12px;font-weight:800}
+.breadth{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;color:var(--sub);margin-top:10px;flex-wrap:wrap}
+.note{font-size:11.5px;color:var(--sub);margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.badge{
+  display:flex;gap:7px;align-items:flex-start;margin-top:11px;padding:9px 11px;border-radius:12px;
+  background:var(--accent-soft);color:var(--text);font-size:11.5px;font-weight:700;line-height:1.4
+}
+.badge .dot{flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:var(--warn);margin-top:5px}
+.up{color:var(--up)} .down{color:var(--down)} .flat{color:var(--sub)}
+
+/* chips */
+.chips{position:relative;display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;margin:0 -2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:9px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:13.5px;font-weight:700;color:var(--sub);display:flex;align-items:center;gap:6px;transition:.15s}
+.chip small{font-size:11px;font-weight:800;opacity:.85}
+.chip.on{background:var(--text);color:var(--card);border-color:transparent}
+.chip.add{border-style:dashed;color:var(--sub)}
+
+/* price header */
+.head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.head .nm{font-size:17px;font-weight:800}
+.head .meta{font-size:11.5px;color:var(--sub);margin-top:2px;font-weight:600}
+.price-row{display:flex;align-items:flex-end;gap:9px;margin-top:10px}
+.price{font-size:33px;font-weight:800;letter-spacing:-.04em;line-height:1.05}
+.price .won{font-size:16px;font-weight:700;color:var(--sub);margin-left:2px}
+.chg{font-size:13px;font-weight:800;padding:4px 8px;border-radius:8px;margin-bottom:4px}
+.chg.up{background:rgba(244,81,108,.13)} .chg.down{background:rgba(77,141,247,.14)} .chg.flat{background:var(--card2)}
+.range{margin-top:14px}
+.range-bar{position:relative;height:6px;border-radius:4px;background:linear-gradient(90deg,var(--down),var(--line) 45%,var(--line) 55%,var(--up));opacity:.95}
+.range-mark{position:absolute;top:-3px;width:3px;height:12px;border-radius:2px;background:var(--text);box-shadow:0 0 0 2px var(--card)}
+.range-l{display:flex;justify-content:space-between;gap:6px;font-size:10.5px;color:var(--dim);margin-top:11px;font-weight:600}
+.kv{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.kv div{background:var(--card2);border-radius:11px;padding:7px 8px;min-width:0}
+.kv .k{font-size:10px;color:var(--sub);font-weight:700;white-space:nowrap}
+.kv .v{font-size:12.5px;font-weight:800;margin-top:2px;white-space:nowrap;letter-spacing:-.02em}
+
+/* score */
+.score-top{display:flex;gap:14px;align-items:center}
+.gauge-wrap{position:relative;width:104px;height:104px;flex:0 0 auto}
+.gauge{width:104px;height:104px;display:block}
+.gauge .bg{fill:none;stroke:var(--line);stroke-width:9}
+.gauge .fg{fill:none;stroke-width:9;stroke-linecap:round;transition:stroke-dasharray .5s ease}
+.gauge-txt{position:absolute;inset:0;display:grid;place-content:center;text-align:center}
+.gauge-txt b{font-size:27px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.gauge-txt span{font-size:10.5px;color:var(--sub);font-weight:700}
+.verdict{flex:1;min-width:0}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border-radius:999px;font-size:12.5px;font-weight:800}
+.pill.buy{background:rgba(42,196,122,.14);color:var(--ok)}
+.pill.hold{background:rgba(243,163,58,.14);color:var(--warn)}
+.pill.cut{background:rgba(244,81,108,.14);color:var(--up)}
+.verdict p{margin:8px 0 0;font-size:12px;color:var(--sub);line-height:1.45}
+.rows{margin-top:16px;display:grid;gap:13px}
+.row-h{display:flex;justify-content:space-between;align-items:baseline;font-size:12.5px;font-weight:800;margin-bottom:5px}
+.row-h em{font-style:normal;color:var(--dim);font-weight:700;font-size:11px;margin-left:5px}
+.bar{height:6px;border-radius:4px;background:var(--card2);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--accent),#7aa8ff);transition:width .4s}
+.bar.t i{background:linear-gradient(90deg,#7aa8ff,#b9d0ff)}
+.row-p{font-size:11.5px;color:var(--sub);margin:5px 0 0;line-height:1.4}
+.target-line{display:flex;justify-content:space-between;align-items:center;margin-top:15px;padding-top:12px;border-top:1px dashed var(--line);font-size:12px;color:var(--sub);font-weight:700}
+.target-line b{font-size:13px;color:var(--text)}
+
+/* chart */
+.seg{display:flex;gap:3px;background:var(--card2);padding:3px;border-radius:11px;margin-top:2px}
+.seg button{flex:1;padding:7px 4px;border-radius:8px;font-size:12px;font-weight:800;color:var(--sub)}
+.seg button.on{background:var(--card);color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.seg.small button{font-size:11.5px;padding:6px 2px}
+.chart-wrap{position:relative;margin-top:12px}
+.chart-wrap svg{width:100%;height:auto;display:block;overflow:visible}
+.legend{display:flex;gap:9px;flex-wrap:wrap;font-size:10px;color:var(--sub);font-weight:700;margin-top:10px}
+.legend i{display:inline-block;width:9px;height:3px;border-radius:2px;margin-right:4px;vertical-align:middle}
+.tip{position:absolute;pointer-events:none;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 9px;font-size:11px;font-weight:700;box-shadow:var(--shadow);opacity:0;transition:opacity .12s;white-space:nowrap;z-index:3}
+.tip.on{opacity:1}
+.mas{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px;font-size:10.5px;color:var(--sub);font-weight:700}
+.mas b{display:block;font-size:12px;color:var(--text);font-weight:800;margin-top:1px}
+.scen{display:grid;gap:8px;margin-top:12px}
+.scen-row{display:grid;grid-template-columns:52px 1fr 1fr;gap:8px;align-items:center;background:var(--card2);border-radius:12px;padding:10px 12px}
+.scen-row .n{font-size:12px;font-weight:800}
+.scen-row .p{font-size:13px;font-weight:800;text-align:right}
+.scen-row .p small{display:block;font-size:10.5px;font-weight:700;opacity:.9;margin-top:1px;text-align:right}
+.scen-note{font-size:11px;color:var(--dim);margin-top:9px;line-height:1.45}
+
+/* calculator */
+.calc-in{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.field label{display:block;font-size:11.5px;color:var(--sub);font-weight:700;margin-bottom:5px}
+.field input{
+  width:100%;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card2);
+  font-size:15px;font-weight:800;font-variant-numeric:tabular-nums;outline:none
+}
+.field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+input::placeholder,textarea::placeholder{color:var(--dim);font-weight:600;letter-spacing:-.01em}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.calc-out div{background:var(--card2);border-radius:12px;padding:10px}
+.calc-out .k{font-size:10.5px;color:var(--sub);font-weight:700}
+.calc-out .v{font-size:14px;font-weight:800;margin-top:2px;letter-spacing:-.02em}
+.pnl{display:grid;gap:7px;margin-top:12px}
+.pnl-row{display:flex;justify-content:space-between;font-size:12px;padding:8px 11px;border-radius:10px;background:var(--card2);font-weight:700}
+.pnl-row b{font-weight:800}
+.pnl-row.empty{font-weight:600;color:var(--sub)}
+.help{font-size:11px;color:var(--dim);margin-top:9px}
+
+/* checklist */
+.check{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.check:last-of-type{border-bottom:0}
+.check input{appearance:none;-webkit-appearance:none;width:19px;height:19px;flex:0 0 auto;border:1.5px solid var(--line);border-radius:6px;margin:1px 0 0;position:relative;background:var(--card2)}
+.check input:checked{background:var(--accent);border-color:var(--accent)}
+.check input:checked::after{content:"";position:absolute;left:5px;top:1.5px;width:5px;height:9px;border:2px solid #fff;border-top:0;border-left:0;transform:rotate(42deg)}
+.check span{font-size:12.5px;line-height:1.4;color:var(--text)}
+.check input:checked + span{color:var(--dim);text-decoration:line-through}
+.goal{display:flex;align-items:center;gap:8px;margin-top:12px}
+.goal input{flex:1;padding:10px 12px;border-radius:11px;border:1px solid var(--line);background:var(--card2);font-size:14px;font-weight:800;font-variant-numeric:tabular-nums;outline:none}
+.goal span{font-size:11.5px;color:var(--sub);font-weight:800;white-space:nowrap}
+textarea{width:100%;min-height:88px;margin-top:10px;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card2);font-size:13px;line-height:1.5;resize:vertical;outline:none}
+textarea:focus{border-color:var(--accent)}
+.saved{font-size:11px;color:var(--dim);margin-top:8px;text-align:right}
+
+/* news */
+.news{display:grid;gap:10px}
+.news li{list-style:none;display:flex;gap:9px;align-items:flex-start}
+.news ul{margin:0;padding:0;display:grid;gap:10px}
+.tag{flex:0 0 auto;font-size:10px;font-weight:800;padding:3px 7px;border-radius:6px;background:var(--accent-soft);color:var(--accent);margin-top:1px}
+.news p{margin:0;font-size:12.5px;line-height:1.5;color:var(--text)}
+.news p em{font-style:normal;color:var(--sub)}
+
+/* footer */
+.foot{margin-top:20px;padding:0 4px;font-size:11px;color:var(--dim);line-height:1.6}
+.foot b{color:var(--sub)}
+.foot button{margin-top:10px;font-size:11px;color:var(--dim);text-decoration:underline}
+
+/* add form */
+.form{display:grid;gap:10px}
+.form .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form input{padding:10px 12px;border-radius:11px;border:1px solid var(--line);background:var(--card2);font-size:14px;font-weight:700;outline:none;width:100%}
+.form .acts{display:flex;gap:8px;margin-top:2px}
+.btn{flex:1;padding:11px;border-radius:12px;font-size:13.5px;font-weight:800;background:var(--accent);color:#fff}
+.btn.ghost{background:var(--card2);color:var(--sub);border:1px solid var(--line)}
+.btn.danger{background:rgba(244,81,108,.13);color:var(--up)}
+.err{font-size:11.5px;color:var(--up);font-weight:700;min-height:1em}
+.del{margin-top:14px}
+@media (max-width:359px){
+  .price{font-size:28px}.kv{grid-template-columns:repeat(2,1fr)}
+  .calc-out{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><b>국장 레이더</b><span>중장기 시그널</span></div>
+    <button class="iconbtn" id="themeBtn" aria-label="라이트/다크 전환">🌙</button>
+  </header>
+
+  <section class="card" id="marketCard"></section>
+  <nav class="chips" id="chips" aria-label="종목 선택"></nav>
+  <div id="addPanel"></div>
+  <main id="view"></main>
+
+  <footer class="foot">
+    <p><b>데이터</b> 네이버 금융·한국거래소 일별 시세 및 투자지표(2026.11.27 종가 기준), 증권사 컨센서스(2026.11.26 집계), 공개 보도 요약. 52주 고저는 KRX 정규장 일별 고가·저가(최근 245거래일) 기준이라 증권 앱 표기와 소폭 다를 수 있습니다.</p>
+    <p><b>고지</b> 이 앱은 정보 정리와 계산을 돕는 <b>참고용 분석 시뮬레이터</b>이며 투자 권유·자문이 아닙니다. 점수와 시나리오는 입력된 지표에 규칙을 적용한 결과로 미래 수익을 예측하지 않습니다. 투자 판단과 결과의 책임은 투자자 본인에게 있습니다.</p>
+    <p><b>저장</b> 평단가·수량, 체크리스트, 메모, 추가한 종목은 이 기기 브라우저(localStorage)에만 저장되며 서버로 전송되지 않습니다.</p>
+    <button id="resetBtn">저장된 내 데이터 초기화</button>
+  </footer>
+</div>
+
+<script>
+window.__errors = [];
+window.addEventListener('error', function(e){ window.__errors.push(String(e.message || e)); });
+window.addEventListener('unhandledrejection', function(e){ window.__errors.push('promise: ' + String(e.reason)); });
+
+const DATA = {"asOf":"2026-11-27","asOfLabel":"2026.11.27(금) 종가","asOfShort":"2026.11.27","market":{"kospi":{"v":4915.68,"chg":4.34,"up":783,"down":109,"flat":16,"foreign":11299,"inst":2369},"kosdaq":{"v":708.99,"chg":8.13,"up":1559,"down":142,"foreign":3074,"inst":5868},"note":"6/22 사상 최고 9,114.55 대비 -46% 조정 뒤 3거래일 만에 4,900선 회복. 외국인 순매수에 코스닥은 매수 사이드카까지 발동됐습니다."},"dates":["2024-01-02","2024-01-03","2024-01-04","2024-01-05","2024-01-08","2024-01-09","2024-01-10","2024-01-11","2024-01-12","2024-01-15","2024-01-16","2024-01-17","2024-01-18","2024-01-19","2024-01-22","2024-01-23","2024-01-24","2024-01-25","2024-01-26","2024-01-29","2024-01-30","2024-01-31","2024-02-01","2024-02-02","2024-02-05","2024-02-06","2024-02-07","2024-02-08","2024-02-13","2024-02-14","2024-02-15","2024-02-16","2024-02-19","2024-02-20","2024-02-21","2024-02-22","2024-02-23","2024-02-26","2024-02-27","2024-02-28","2024-02-29","2024-03-04","2024-03-05","2024-03-06","2024-03-07","2024-03-08","2024-03-11","2024-03-12","2024-03-13","2024-03-14","2024-03-15","2024-03-18","2024-03-19","2024-03-20","2024-03-21","2024-03-22","2024-03-25","2024-03-26","2024-03-27","2024-03-28","2024-03-29","2024-04-01","2024-04-02","2024-04-03","2024-04-04","2024-04-05","2024-04-08","2024-04-09","2024-04-11","2024-04-12","2024-04-15","2024-04-16","2024-04-17","2024-04-18","2024-04-19","2024-04-22","2024-04-23","2024-04-24","2024-04-25","2024-04-26","2024-04-29","2024-04-30","2024-05-02","2024-05-03","2024-05-07","2024-05-08","2024-05-09","2024-05-10","2024-05-13","2024-05-14","2024-05-16","2024-05-17","2024-05-20","2024-05-21","2024-05-22","2024-05-23","2024-05-24","2024-05-27","2024-05-28","2024-05-29","2024-05-30","2024-05-31","2024-06-03","2024-06-04","2024-06-05","2024-06-07","2024-06-10","2024-06-11","2024-06-12","2024-06-13","2024-06-14","2024-06-17","2024-06-18","2024-06-19","2024-06-20","2024-06-21","2024-06-24","2024-06-25","2024-06-26","2024-06-27","2024-06-28","2024-07-01","2024-07-02","2024-07-03","2024-07-04","2024-07-05","2024-07-08","2024-07-09","2024-07-10","2024-07-11","2024-07-12","2024-07-15","2024-07-16","2024-07-17","2024-07-18","2024-07-19","2024-07-22","2024-07-23","2024-07-24","2024-07-25","2024-07-26","2024-07-29","2024-07-30","2024-07-31","2024-08-01","2024-08-02","2024-08-05","2024-08-06","2024-08-07","2024-08-08","2024-08-09","2024-08-12","2024-08-13","2024-08-14","2024-08-16","2024-08-19","2024-08-20","2024-08-21","2024-08-22","2024-08-23","2024-08-26","2024-08-27","2024-08-28","2024-08-29","2024-08-30","2024-09-02","2024-09-03","2024-09-04","2024-09-05","2024-09-06","2024-09-09","2024-09-10","2024-09-11","2024-09-12","2024-09-13","2024-09-19","2024-09-20","2024-09-23","2024-09-24","2024-09-25","2024-09-26","2024-09-27","2024-09-30","2024-10-02","2024-10-04","2024-10-07","2024-10-08","2024-10-10","2024-10-11","2024-10-14","2024-10-15","2024-10-16","2024-10-17","2024-10-18","2024-10-21","2024-10-22","2024-10-23","2024-10-24","2024-10-25","2024-10-28","2024-10-29","2024-10-30","2024-10-31","2024-11-01","2024-11-04","2024-11-05","2024-11-06","2024-11-07","2024-11-08","2024-11-11","2024-11-12","2024-11-13","2024-11-14","2024-11-15","2024-11-18","2024-11-19","2024-11-20","2024-11-21","2024-11-22","2024-11-25","2024-11-26","2024-11-27","2024-11-28","2024-11-29","2024-12-02","2024-12-03","2024-12-04","2024-12-05","2024-12-06","2024-12-09","2024-12-10","2024-12-11","2024-12-12","2024-12-13","2024-12-16","2024-12-17","2024-12-18","2024-12-19","2024-12-20","2024-12-23","2024-12-24","2024-12-26","2024-12-27","2024-12-30","2025-01-02","2025-01-03","2025-01-06","2025-01-07","2025-01-08","2025-01-09","2025-01-10","2025-01-13","2025-01-14","2025-01-15","2025-01-16","2025-01-17","2025-01-20","2025-01-21","2025-01-22","2025-01-23","2025-01-24","2025-01-31","2025-02-03","2025-02-04","2025-02-05","2025-02-06","2025-02-07","2025-02-10","2025-02-11","2025-02-12","2025-02-13","2025-02-14","2025-02-17","2025-02-18","2025-02-19","2025-02-20","2025-02-21","2025-02-24","2025-02-25","2025-02-26","2025-02-27","2025-02-28","2025-03-04","2025-03-05","2025-03-06","2025-03-07","2025-03-10","2025-03-11","2025-03-12","2025-03-13","2025-03-14","2025-03-17","2025-03-18","2025-03-19","2025-03-20","2025-03-21","2025-03-24","2025-03-25","2025-03-26","2025-03-27","2025-03-28","2025-03-31","2025-04-01","2025-04-02","2025-04-03","2025-04-04","2025-04-07","2025-04-08","2025-04-09","2025-04-10","2025-04-11","2025-04-14","2025-04-15","2025-04-16","2025-04-17","2025-04-18","2025-04-21","2025-04-22","2025-04-23","2025-04-24","2025-04-25","2025-04-28","2025-04-29","2025-04-30","2025-05-02","2025-05-07","2025-05-08","2025-05-09","2025-05-12","2025-05-13","2025-05-14","2025-05-15","2025-05-16","2025-05-19","2025-05-20","2025-05-21","2025-05-22","2025-05-23","2025-05-26","2025-05-27","2025-05-28","2025-05-29","2025-05-30","2025-06-02","2025-06-04","2025-06-05","2025-06-09","2025-06-10","2025-06-11","2025-06-12","2025-06-13","2025-06-16","2025-06-17","2025-06-18","2025-06-19","2025-06-20","2025-06-23","2025-06-24","2025-06-25","2025-06-26","2025-06-27","2025-06-30","2025-07-01","2025-07-02","2025-07-03","2025-07-04","2025-07-07","2025-07-08","2025-07-09","2025-07-10","2025-07-11","2025-07-14","2025-07-15","2025-07-16","2025-07-17","2025-07-18","2025-07-21","2025-07-22","2025-07-23","2025-07-24","2025-07-25","2025-07-28","2025-07-29","2025-07-30","2025-07-31","2025-08-01","2025-08-04","2025-08-05","2025-08-06","2025-08-07","2025-08-08","2025-08-11","2025-08-12","2025-08-13","2025-08-14","2025-08-18","2025-08-19","2025-08-20","2025-08-21","2025-08-22","2025-08-25","2025-08-26","2025-08-27","2025-08-28","2025-08-29","2025-09-01","2025-09-02","2025-09-03","2025-09-04","2025-09-05","2025-09-08","2025-09-09","2025-09-10","2025-09-11","2025-09-12","2025-09-15","2025-09-16","2025-09-17","2025-09-18","2025-09-19","2025-09-22","2025-09-23","2025-09-24","2025-09-25","2025-09-26","2025-09-29","2025-09-30","2025-10-01","2025-10-02","2025-10-10","2025-10-13","2025-10-14","2025-10-15","2025-10-16","2025-10-17","2025-10-20","2025-10-21","2025-10-22","2025-10-23","2025-10-24","2025-10-27","2025-10-28","2025-10-29","2025-10-30","2025-10-31","2025-11-03","2025-11-04","2025-11-05","2025-11-06","2025-11-07","2025-11-10","2025-11-11","2025-11-12","2025-11-13","2025-11-14","2025-11-17","2025-11-18","2025-11-19","2025-11-20","2025-11-21","2025-11-24","2025-11-25","2025-11-26","2025-11-27","2025-11-28","2025-12-01","2025-12-02","2025-12-03","2025-12-04","2025-12-05","2025-12-08","2025-12-09","2025-12-10","2025-12-11","2025-12-12","2025-12-15","2025-12-16","2025-12-17","2025-12-18","2025-12-19","2025-12-22","2025-12-23","2025-12-24","2025-12-26","2025-12-29","2025-12-30","2026-01-02","2026-01-05","2026-01-06","2026-01-07","2026-01-08","2026-01-09","2026-01-12","2026-01-13","2026-01-14","2026-01-15","2026-01-16","2026-01-19","2026-01-20","2026-01-21","2026-01-22","2026-01-23","2026-01-26","2026-01-27","2026-01-28","2026-01-29","2026-01-30","2026-02-02","2026-02-03","2026-02-04","2026-02-05","2026-02-06","2026-02-09","2026-02-10","2026-02-11","2026-02-12","2026-02-13","2026-02-19","2026-02-20","2026-02-23","2026-02-24","2026-02-25","2026-02-26","2026-02-27","2026-03-03","2026-03-04","2026-03-05","2026-03-06","2026-03-09","2026-03-10","2026-03-11","2026-03-12","2026-03-13","2026-03-16","2026-03-17","2026-03-18","2026-03-19","2026-03-20","2026-03-23","2026-03-24","2026-03-25","2026-03-26","2026-03-27","2026-03-30","2026-03-31","2026-04-01","2026-04-02","2026-04-03","2026-04-06","2026-04-07","2026-04-08","2026-04-09","2026-04-10","2026-04-13","2026-04-14","2026-04-15","2026-04-16","2026-04-17","2026-04-20","2026-04-21","2026-04-22","2026-04-23","2026-04-24","2026-04-27","2026-04-28","2026-04-29","2026-04-30","2026-05-04","2026-05-06","2026-05-07","2026-05-08","2026-05-11","2026-05-12","2026-05-13","2026-05-14","2026-05-15","2026-05-18","2026-05-19","2026-05-20","2026-05-21","2026-05-22","2026-05-26","2026-05-27","2026-05-28","2026-05-29","2026-06-01","2026-06-02","2026-06-04","2026-06-05","2026-06-08","2026-06-09","2026-06-10","2026-06-11","2026-06-12","2026-06-15","2026-06-16","2026-06-17","2026-06-18","2026-06-19","2026-06-22","2026-06-23","2026-06-24","2026-06-25","2026-06-26","2026-06-29","2026-06-30","2026-07-01","2026-07-02","2026-07-03","2026-07-06","2026-07-07","2026-07-08","2026-07-09","2026-07-10","2026-07-13","2026-07-14","2026-07-15","2026-07-16","2026-07-20","2026-07-21","2026-07-22","2026-07-23","2026-07-24","2026-07-27","2026-07-28","2026-07-29","2026-07-30","2026-07-31","2026-08-03","2026-08-04","2026-08-05","2026-08-06","2026-08-07","2026-08-10","2026-08-11","2026-08-12","2026-08-13","2026-08-14","2026-08-18","2026-08-19","2026-08-20","2026-08-21","2026-08-24","2026-08-25","2026-08-26","2026-08-27","2026-08-28","2026-08-31","2026-09-01","2026-09-02","2026-09-03","2026-09-04","2026-09-07","2026-09-08","2026-09-09","2026-09-10","2026-09-11","2026-09-14","2026-09-15","2026-09-16","2026-09-17","2026-09-18","2026-09-21","2026-09-22","2026-09-23","2026-09-28","2026-09-29","2026-09-30","2026-10-01","2026-10-02","2026-10-06","2026-10-07","2026-10-08","2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16","2026-10-19","2026-10-20","2026-10-21","2026-10-22","2026-10-23","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-09","2026-11-10","2026-11-11","2026-11-12","2026-11-13","2026-11-16","2026-11-17","2026-11-18","2026-11-19","2026-11-20","2026-11-23","2026-11-24","2026-11-25","2026-11-26","2026-11-27"],"stocks":[{"code":"005930","name":"삼성전자","sector":"반도체 · IT","per":5.64,"pbr":1.93,"div":3.45,"dps":5913,"eps":31809,"bps":92903,"mktcap":"1,049.4","peerPer":14.21,"peerPbr":1.61,"target":458182,"summary":"6월 고점 대비 반토막 난 뒤 첫 반등. PER 5.6배·배당 3.45%로 밸류 부담은 낮지만 60·200일선 아래 역배열이 이어집니다.","news":[{"tag":"배당","text":"11/27 약 30조원 규모 배당금 지급. 재투자 수요가 지수 수급에 우호적이라는 기대가 나왔습니다(연합뉴스)."},{"tag":"수급","text":"이날 코스피에서 외국인 1조1,299억원(9/7 이후 최대)·기관 2,369억원 순매수. 코스피 +4.34%."},{"tag":"리스크","text":"6/22 고점 380,000원 대비 -53%. AI 투자 수익성·메모리 공급과잉 우려로 3개월 -31%."},{"tag":"밸류","text":"PER 5.64배(반도체 업종 중앙 14.21배), PBR 1.93배. 증권사 평균 목표주가 458,182원."}],"price":179500.0,"chg":4.66,"high52":374500.0,"low52":99900.0,"series":[79600.0,77000.0,76600.0,76600.0,76500.0,74700.0,73600.0,73200.0,73100.0,73900.0,72600.0,71000.0,71700.0,74700.0,75100.0,75200.0,74000.0,74100.0,73400.0,74400.0,74300.0,72700.0,73600.0,75200.0,74300.0,74400.0,75000.0,74100.0,75200.0,74000.0,73000.0,72800.0,73800.0,73300.0,73000.0,73100.0,72900.0,72800.0,72900.0,73200.0,73400.0,74900.0,73700.0,72900.0,72200.0,73300.0,72400.0,73300.0,74100.0,74300.0,72300.0,72800.0,72800.0,76900.0,79300.0,78900.0,78200.0,79900.0,79800.0,80800.0,82400.0,82000.0,85000.0,84100.0,85300.0,84500.0,84500.0,83600.0,84100.0,83700.0,82200.0,80000.0,78900.0,79600.0,77600.0,76100.0,75500.0,78600.0,76300.0,76700.0,76700.0,77500.0,78000.0,77600.0,81300.0,81300.0,79700.0,79200.0,78400.0,78300.0,78200.0,77400.0,78900.0,78400.0,77700.0,78300.0,75900.0,77200.0,77600.0,75200.0,73500.0,73500.0,75700.0,75300.0,77400.0,77300.0,75700.0,75200.0,76500.0,78600.0,79600.0,78100.0,79800.0,81200.0,81600.0,80000.0,80600.0,80800.0,81300.0,81600.0,81500.0,81800.0,81800.0,81800.0,84600.0,87100.0,87400.0,87800.0,87800.0,87600.0,84400.0,86700.0,87700.0,86700.0,86900.0,84400.0,83000.0,83900.0,82000.0,80400.0,80900.0,81200.0,81000.0,83900.0,83100.0,79600.0,71400.0,72500.0,74700.0,73400.0,74700.0,75500.0,76100.0,77200.0,80200.0,78300.0,78900.0,78300.0,78300.0,77700.0,76100.0,75800.0,76400.0,74000.0,74300.0,74400.0,72500.0,70000.0,69000.0,68900.0,67500.0,66200.0,64900.0,66300.0,64400.0,63100.0,63000.0,62600.0,63200.0,62200.0,64700.0,64200.0,61500.0,61300.0,60600.0,61000.0,60300.0,58900.0,59300.0,60800.0,61000.0,59500.0,59700.0,59200.0,59000.0,57700.0,59100.0,56600.0,55900.0,58100.0,59600.0,59100.0,59200.0,58300.0,58700.0,57600.0,57300.0,57500.0,57000.0,55000.0,53000.0,50600.0,49900.0,53500.0,56700.0,56300.0,55300.0,56400.0,56000.0,57900.0,58300.0,56300.0,55500.0,54200.0,53600.0,53600.0,53100.0,53700.0,54100.0,53400.0,54000.0,54000.0,55900.0,56100.0,55600.0,54200.0,54900.0,53100.0,53000.0,53500.0,54400.0,53600.0,53700.0,53200.0,53400.0,54400.0,55900.0,55400.0,57300.0,56100.0,55300.0,54100.0,53900.0,53700.0,54300.0,53700.0,53400.0,53500.0,54300.0,53700.0,53700.0,52400.0,51000.0,52700.0,52900.0,54000.0,53700.0,55600.0,55700.0,55800.0,55800.0,56000.0,56000.0,56900.0,58700.0,58400.0,58200.0,57300.0,57200.0,56600.0,56300.0,54500.0,54500.0,54000.0,54300.0,53700.0,53700.0,53600.0,54900.0,54700.0,54700.0,57600.0,57600.0,58500.0,60200.0,61700.0,60500.0,59800.0,61400.0,61800.0,60200.0,57800.0,58800.0,58800.0,57600.0,56100.0,53200.0,53500.0,53000.0,56400.0,55200.0,56200.0,56600.0,54700.0,55100.0,55300.0,55400.0,55000.0,55700.0,55700.0,55700.0,55800.0,55800.0,55500.0,54300.0,54600.0,54600.0,54800.0,57600.0,56900.0,57400.0,57300.0,56800.0,55800.0,55900.0,55700.0,54700.0,54200.0,54700.0,53900.0,55900.0,56100.0,56200.0,56800.0,57800.0,59100.0,59800.0,59200.0,59900.0,59500.0,58300.0,57200.0,58100.0,59800.0,59200.0,59500.0,58000.0,60500.0,61300.0,60200.0,60800.0,59800.0,60200.0,60800.0,63800.0,63300.0,61700.0,61400.0,60400.0,61000.0,62600.0,62500.0,63700.0,64700.0,66700.0,67100.0,67800.0,66000.0,66400.0,66000.0,65900.0,70400.0,70600.0,72600.0,71400.0,68900.0,69700.0,69900.0,68800.0,70500.0,71800.0,71000.0,71100.0,71900.0,71600.0,70000.0,70000.0,70500.0,70600.0,71400.0,71500.0,70300.0,70600.0,69600.0,69700.0,67600.0,69100.0,69800.0,70100.0,69500.0,70100.0,71500.0,72600.0,73400.0,75400.0,76500.0,79400.0,78200.0,80500.0,79700.0,83500.0,84700.0,85400.0,86100.0,83300.0,84200.0,83900.0,86000.0,89000.0,94400.0,93300.0,91600.0,95000.0,97700.0,97900.0,98100.0,97500.0,98600.0,96500.0,98800.0,102000.0,99500.0,100500.0,104100.0,107500.0,111100.0,104900.0,100600.0,99200.0,97900.0,100600.0,103500.0,103100.0,102800.0,97200.0,100600.0,97800.0,96500.0,100600.0,94800.0,96700.0,99300.0,102800.0,103500.0,100500.0,100800.0,103400.0,104500.0,105100.0,108400.0,109500.0,108400.0,108000.0,107300.0,108900.0,104800.0,102800.0,107900.0,107600.0,106300.0,110500.0,111500.0,111100.0,117000.0,119500.0,119900.0,128500.0,138100.0,138900.0,141000.0,138800.0,139000.0,138800.0,137600.0,140300.0,143900.0,148900.0,149300.0,145200.0,149500.0,152300.0,152100.0,152100.0,159500.0,162400.0,160700.0,160500.0,150400.0,167500.0,169100.0,159300.0,158600.0,166400.0,165800.0,167800.0,178600.0,181200.0,190000.0,190100.0,193000.0,200000.0,203500.0,218000.0,216500.0,195100.0,172200.0,191600.0,188200.0,173500.0,187900.0,190000.0,187900.0,183500.0,188700.0,193900.0,208500.0,200500.0,199400.0,186300.0,189700.0,189000.0,180100.0,179700.0,176300.0,167200.0,189600.0,178400.0,186200.0,193100.0,196500.0,210500.0,204000.0,206000.0,201000.0,206500.0,211000.0,217500.0,216000.0,214500.0,219000.0,217500.0,224500.0,219500.0,224500.0,222000.0,226000.0,220500.0,232500.0,266000.0,271500.0,268500.0,285500.0,279000.0,284000.0,296000.0,270500.0,281000.0,275500.0,276000.0,299500.0,292500.0,299000.0,307000.0,299500.0,317000.0,349000.0,360500.0,351500.0,329000.0,295500.0,322000.0,302500.0,299000.0,322500.0,337000.0,343000.0,346500.0,362500.0,354000.0,353500.0,310000.0,340500.0,358500.0,339500.0,323000.0,334000.0,314500.0,286000.0,309500.0,318000.0,296000.0,277500.0,278000.0,285000.0,254500.0,263000.0,279500.0,255000.0,244000.0,259000.0,260500.0,270000.0,249500.0,254000.0,220000.0,208500.0,207000.0,262500.0,239500.0,240000.0,246000.0,230500.0,231000.0,230000.0,239500.0,255500.0,268000.0,274500.0,268500.0,247500.0,271000.0,281500.0,257000.0,257000.0,261500.0,266000.0,257000.0,260000.0,261000.0,250500.0,250000.0,255500.0,270000.0,269500.0,269500.0,269000.0,259500.0,248500.0,250500.0,253500.0,256000.0,260000.0,275000.0,277500.0,286500.0,270000.0,275000.0,269500.0,274500.0,276000.0,273000.0,269000.0,263000.0,251000.0,234000.0,234500.0,207500.0,217000.0,223500.0,209000.0,223500.0,214500.0,213500.0,213500.0,225000.0,245000.0,230500.0,220500.0,230000.0,222000.0,221500.0,201500.0,193500.0,187000.0,197300.0,208000.0,206500.0,209000.0,195000.0,189800.0,196400.0,197400.0,180900.0,180600.0,182900.0,166900.0,171500.0,179500.0]},{"code":"000660","name":"SK하이닉스","sector":"반도체 · HBM","per":4.25,"pbr":2.56,"div":0.29,"dps":3000,"eps":261625,"bps":433826,"mktcap":"785.3","peerPer":21.78,"peerPbr":null,"target":2929091,"summary":"HBM 사이클 기대와 메모리 공급과잉 우려가 맞서는 구간. PBR 2.6배·배당 0.29%로 밸류·배당 매력은 낮습니다.","news":[{"tag":"업황","text":"HBM·온디바이스 AI 테마. 2026년 영업이익 컨센서스 283.8조원(2025년 47.2조원 대비 +501%) — 증권가 추정."},{"tag":"리스크","text":"BNP파리바가 마이크론 목표가를 1,700→775달러로 내리며 2028년 메모리 공급과잉 우려를 제기(11/25)."},{"tag":"가격","text":"52주 최고 3,002,000원 대비 -63%, 3개월 -34%. 이날 +5.31% 반등."},{"tag":"배당","text":"주당 3,000원, 배당수익률 0.29%. 2026년 배당락일 11/27."}],"price":1111000.0,"chg":5.31,"high52":2987000.0,"low52":525000.0,"series":[142400.0,136800.0,136400.0,137500.0,136000.0,137400.0,133500.0,136000.0,134100.0,134100.0,132100.0,131000.0,136200.0,141300.0,142600.0,140800.0,141500.0,137400.0,136000.0,135000.0,136900.0,134700.0,132700.0,134900.0,132300.0,138000.0,138000.0,142800.0,150000.0,148700.0,148700.0,146800.0,151300.0,149600.0,149000.0,156500.0,161400.0,161800.0,153800.0,158000.0,156200.0,166500.0,165800.0,162900.0,164900.0,171900.0,166600.0,165700.0,163600.0,161900.0,161200.0,164300.0,160200.0,156500.0,170000.0,169800.0,169400.0,176600.0,181200.0,178200.0,183000.0,185500.0,186300.0,179200.0,188000.0,182800.0,181200.0,182900.0,188400.0,187400.0,188200.0,179100.0,178700.0,182300.0,173300.0,171600.0,171000.0,179800.0,170600.0,177800.0,175900.0,174200.0,173600.0,173200.0,179600.0,178000.0,175400.0,179900.0,183800.0,185300.0,193000.0,189900.0,190100.0,192000.0,197700.0,200000.0,198600.0,201500.0,202500.0,202500.0,195700.0,189200.0,194200.0,193300.0,193700.0,207500.0,208000.0,212500.0,215000.0,222000.0,221000.0,223000.0,234500.0,233500.0,237500.0,234000.0,223000.0,225000.0,237000.0,236500.0,236500.0,235500.0,232000.0,236000.0,230000.0,236000.0,233500.0,238500.0,239000.0,241000.0,233000.0,230000.0,233000.0,220500.0,212500.0,209500.0,205000.0,205000.0,208500.0,190000.0,191800.0,195600.0,188900.0,194600.0,193300.0,173200.0,156100.0,163700.0,169300.0,163400.0,171500.0,177000.0,181900.0,186700.0,199700.0,193900.0,199700.0,192600.0,191100.0,185500.0,179600.0,175000.0,179300.0,169700.0,173700.0,174000.0,168300.0,154800.0,159400.0,156400.0,157000.0,155500.0,157200.0,168800.0,162800.0,152800.0,157100.0,162000.0,163500.0,165300.0,180900.0,183800.0,174600.0,169100.0,174100.0,184900.0,178000.0,186700.0,186000.0,187500.0,192900.0,188700.0,196000.0,187300.0,190900.0,187800.0,196000.0,198200.0,201000.0,196000.0,190300.0,195000.0,186300.0,182200.0,194000.0,193200.0,195800.0,197400.0,200500.0,192600.0,185800.0,182900.0,173000.0,178200.0,171700.0,170600.0,170600.0,168800.0,176700.0,177000.0,177100.0,168300.0,161100.0,159900.0,158800.0,164900.0,168000.0,173000.0,167100.0,168900.0,170400.0,171800.0,176100.0,175500.0,179300.0,184000.0,183500.0,175000.0,168500.0,169600.0,168500.0,170100.0,174500.0,173900.0,171200.0,181900.0,199800.0,195000.0,194700.0,205000.0,203500.0,194300.0,195000.0,198200.0,210000.0,214500.0,212000.0,218000.0,225500.0,219500.0,221000.0,199200.0,190900.0,191100.0,198800.0,203500.0,203000.0,198100.0,199700.0,198900.0,208500.0,210000.0,212000.0,210000.0,218500.0,212000.0,209500.0,205000.0,200500.0,203000.0,199200.0,190200.0,186100.0,193100.0,192400.0,192400.0,187900.0,187800.0,198900.0,199700.0,204500.0,206000.0,203000.0,205500.0,210000.0,215500.0,211500.0,208000.0,214000.0,207000.0,199300.0,190700.0,197000.0,197900.0,194600.0,182200.0,164800.0,169500.0,165000.0,183200.0,180800.0,180200.0,180600.0,174000.0,175000.0,175000.0,176600.0,173800.0,181000.0,178300.0,184400.0,182000.0,180800.0,177500.0,186000.0,190800.0,190300.0,190100.0,195000.0,198500.0,206000.0,200500.0,204500.0,199400.0,202000.0,200500.0,196900.0,200000.0,203000.0,202500.0,208000.0,212000.0,204500.0,207500.0,217500.0,224500.0,229000.0,230500.0,240000.0,235500.0,235500.0,248000.0,249000.0,246500.0,246000.0,257000.0,259500.0,278500.0,286000.0,293000.0,284000.0,292000.0,285500.0,279000.0,278500.0,270500.0,271000.0,282000.0,281000.0,297000.0,294500.0,300000.0,298500.0,296000.0,269500.0,269000.0,272500.0,268500.0,269000.0,269500.0,266000.0,262000.0,262500.0,263500.0,273500.0,258000.0,258000.0,263500.0,258500.0,262000.0,256500.0,267000.0,269000.0,278000.0,276500.0,267500.0,263000.0,255500.0,245000.0,251000.0,259500.0,261500.0,260000.0,268500.0,269000.0,256000.0,260500.0,262500.0,265500.0,273500.0,277000.0,288000.0,304000.0,307000.0,328500.0,331000.0,348000.0,333500.0,353000.0,353000.0,351000.0,361000.0,357500.0,356500.0,336500.0,349000.0,347500.0,360000.0,395500.0,428000.0,415000.0,411500.0,422500.0,452500.0,465500.0,485500.0,479000.0,481500.0,478500.0,510000.0,535000.0,521000.0,558000.0,568000.0,559000.0,620000.0,586000.0,579000.0,593000.0,580000.0,606000.0,619000.0,617000.0,612000.0,560000.0,606000.0,570000.0,562000.0,571000.0,521000.0,520000.0,519000.0,524000.0,544000.0,530000.0,538000.0,558000.0,552000.0,542000.0,544000.0,577000.0,566000.0,587000.0,565000.0,571000.0,554000.0,530000.0,551000.0,552000.0,547000.0,580000.0,584000.0,588000.0,599000.0,640000.0,651000.0,677000.0,696000.0,726000.0,742000.0,756000.0,744000.0,749000.0,738000.0,742000.0,749000.0,756000.0,764000.0,743000.0,740000.0,755000.0,767000.0,736000.0,800000.0,841000.0,861000.0,909000.0,830000.0,907000.0,900000.0,842000.0,839000.0,887000.0,876000.0,860000.0,888000.0,880000.0,894000.0,949000.0,951000.0,1005000.0,1018000.0,1099000.0,1061000.0,939000.0,849000.0,941000.0,924000.0,836000.0,938000.0,955000.0,930000.0,910000.0,974000.0,970000.0,1056000.0,1013000.0,1007000.0,933000.0,986000.0,995000.0,933000.0,922000.0,873000.0,807000.0,893000.0,830000.0,876000.0,886000.0,916000.0,1033000.0,998000.0,1027000.0,1040000.0,1103000.0,1136000.0,1155000.0,1128000.0,1166000.0,1224000.0,1223000.0,1225000.0,1222000.0,1292000.0,1300000.0,1293000.0,1286000.0,1447000.0,1601000.0,1654000.0,1686000.0,1880000.0,1835000.0,1976000.0,1970000.0,1819000.0,1840000.0,1745000.0,1745000.0,1940000.0,1941000.0,2052000.0,2243000.0,2289000.0,2333000.0,2363000.0,2360000.0,2298000.0,2070000.0,1911000.0,2215000.0,2048000.0,2101000.0,2150000.0,2288000.0,2382000.0,2521000.0,2685000.0,2764000.0,2919000.0,2555000.0,2580000.0,2917000.0,2673000.0,2628000.0,2650000.0,2560000.0,2187000.0,2425000.0,2343000.0,2201000.0,2076000.0,2186000.0,2180000.0,1845000.0,1913000.0,2082000.0,1842000.0,1764000.0,1836000.0,1830000.0,1919000.0,1759000.0,1816000.0,1550000.0,1401000.0,1322000.0,1718000.0,1567000.0,1577000.0,1668000.0,1495000.0,1422000.0,1420000.0,1425000.0,1504000.0,1593000.0,1645000.0,1662000.0,1500000.0,1691000.0,1730000.0,1671000.0,1678000.0,1688000.0,1730000.0,1653000.0,1674000.0,1693000.0,1613000.0,1596000.0,1647000.0,1783000.0,1793000.0,1856000.0,1853000.0,1812000.0,1683000.0,1712000.0,1757000.0,1766000.0,1849000.0,1879000.0,1841000.0,1863000.0,1761000.0,1790000.0,1783000.0,1828000.0,1842000.0,1784000.0,1715000.0,1686000.0,1605000.0,1456000.0,1425000.0,1238000.0,1265000.0,1304000.0,1190000.0,1288000.0,1234000.0,1263000.0,1290000.0,1374000.0,1508000.0,1516000.0,1391000.0,1480000.0,1414000.0,1420000.0,1262000.0,1176000.0,1115000.0,1198000.0,1291000.0,1241000.0,1233000.0,1118000.0,1100000.0,1164000.0,1190000.0,1100000.0,1101000.0,1113000.0,1014000.0,1055000.0,1111000.0]},{"code":"005380","name":"현대차","sector":"자동차","per":9.45,"pbr":0.61,"div":3.86,"dps":10000,"eps":28621,"bps":443872,"mktcap":"55.0","peerPer":5.18,"peerPbr":0.32,"target":496400,"summary":"52주 최저가에 붙은 자리에서 반등. PBR 0.61배·배당 3.86%로 자산가치 대비 저평가지만 추세 회복은 아직 확인되지 않았습니다.","news":[{"tag":"리포트","text":"iM증권, 목표주가 60만원 유지. 내수 회복·미국 HMGMA 가동률 상승으로 내년 영업이익 12.7조원 추정(11/27)."},{"tag":"모멘텀","text":"LG유플러스와 현대차·기아 로보틱스랩이 배송로봇 '달이 딜리버리' 5G SA 실증을 완료했다고 밝힘(11/27 보도)."},{"tag":"수급","text":"52주 최저 240,500원에서 12% 위. 이날 외국인·기관 순매수, 개인 순매도."},{"tag":"리스크","text":"미국 관세 정책과 원화 강세가 변수. 3개월 -33%."}],"price":270500.0,"chg":4.24,"high52":783000.0,"low52":240500.0,"series":[200500.0,193800.0,190000.0,187300.0,185700.0,185600.0,186700.0,187000.0,186000.0,187500.0,186200.0,181800.0,180200.0,181700.0,180100.0,184800.0,185000.0,188700.0,187300.0,195600.0,190000.0,194600.0,208000.0,227000.0,238000.0,235500.0,245000.0,250000.0,249000.0,245500.0,240000.0,252500.0,252500.0,242000.0,239500.0,243500.0,244000.0,239000.0,238500.0,248000.0,250500.0,255500.0,249000.0,251000.0,250000.0,253000.0,243500.0,241500.0,248500.0,251500.0,243500.0,242500.0,237500.0,241000.0,252000.0,243500.0,239500.0,240500.0,244000.0,237000.0,233000.0,227500.0,220000.0,216000.0,226000.0,225500.0,232500.0,228000.0,241000.0,238000.0,241500.0,242000.0,233500.0,231000.0,235000.0,245000.0,249500.0,252500.0,250000.0,249500.0,251500.0,251000.0,249000.0,241000.0,242000.0,242000.0,237000.0,241500.0,245000.0,246500.0,247000.0,244000.0,250500.0,253000.0,277000.0,271500.0,267500.0,265500.0,265000.0,261000.0,257000.0,253000.0,265000.0,259000.0,264000.0,265000.0,267500.0,271000.0,270000.0,269000.0,268000.0,278500.0,283000.0,286500.0,285500.0,280000.0,281000.0,288500.0,289500.0,298000.0,295000.0,286000.0,272500.0,276000.0,277500.0,281000.0,283000.0,274500.0,274500.0,278500.0,271500.0,268500.0,274500.0,268500.0,260500.0,258500.0,255000.0,263500.0,258500.0,251500.0,243500.0,255500.0,250000.0,249000.0,253500.0,244000.0,224000.0,235000.0,236000.0,236500.0,243000.0,243500.0,243000.0,241000.0,255000.0,255000.0,256000.0,252500.0,248000.0,252500.0,249500.0,247500.0,259000.0,258500.0,255500.0,246000.0,237500.0,232500.0,229000.0,227500.0,229500.0,231000.0,223500.0,232000.0,237000.0,246000.0,250500.0,249000.0,253000.0,251500.0,259000.0,254500.0,244000.0,237000.0,239500.0,247000.0,246000.0,246000.0,248500.0,248500.0,246000.0,247000.0,235500.0,234500.0,237000.0,234500.0,241000.0,228500.0,225500.0,226500.0,224000.0,220500.0,215000.0,213500.0,216500.0,215000.0,206500.0,207500.0,203500.0,211000.0,207000.0,199900.0,201500.0,206000.0,217000.0,215500.0,218500.0,215500.0,217000.0,219000.0,223500.0,221000.0,219000.0,218500.0,216000.0,214500.0,209000.0,204500.0,203500.0,201000.0,210500.0,209000.0,211500.0,215000.0,211000.0,206500.0,216500.0,212000.0,210500.0,215000.0,216500.0,217500.0,215000.0,212000.0,211500.0,213000.0,211500.0,211000.0,213500.0,213000.0,226000.0,220000.0,222000.0,220500.0,219000.0,211500.0,208500.0,206500.0,208500.0,209000.0,205000.0,206000.0,202000.0,201000.0,204500.0,203500.0,200500.0,199400.0,199400.0,198100.0,208500.0,206000.0,199800.0,200500.0,204000.0,203000.0,206000.0,207000.0,202500.0,205000.0,200500.0,193000.0,190300.0,194700.0,197600.0,196600.0,197400.0,195600.0,198200.0,201000.0,198500.0,199000.0,200500.0,204000.0,202500.0,205000.0,213000.0,220000.0,222000.0,212500.0,205000.0,197200.0,198600.0,196300.0,193800.0,191800.0,179100.0,179200.0,178000.0,187000.0,177500.0,179300.0,187000.0,181700.0,181700.0,187200.0,187300.0,185600.0,190000.0,188900.0,188800.0,189000.0,192800.0,190600.0,189400.0,187600.0,187100.0,189900.0,195800.0,196700.0,197100.0,192900.0,193800.0,191000.0,189500.0,188000.0,182400.0,179900.0,181900.0,181900.0,185900.0,191000.0,185300.0,184000.0,186000.0,189600.0,197800.0,197000.0,201000.0,201500.0,199000.0,201500.0,205000.0,206000.0,207000.0,210000.0,201500.0,206000.0,217000.0,209500.0,205000.0,203500.0,210000.0,213500.0,214500.0,210500.0,208500.0,211000.0,209500.0,208000.0,208000.0,217000.0,211000.0,207500.0,210000.0,210500.0,209000.0,206500.0,222000.0,217500.0,216500.0,218500.0,218000.0,223000.0,213000.0,210000.0,211000.0,210500.0,210500.0,212500.0,212500.0,212500.0,213000.0,216000.0,217500.0,216500.0,219000.0,220500.0,221500.0,220000.0,222000.0,218500.0,220000.0,222000.0,220000.0,220500.0,220000.0,221500.0,221500.0,220000.0,218500.0,219000.0,220500.0,223000.0,223500.0,215000.0,215000.0,216000.0,218500.0,214000.0,218000.0,219000.0,217500.0,217000.0,214500.0,215000.0,215000.0,215500.0,220000.0,217000.0,218500.0,223000.0,223500.0,242000.0,243000.0,248000.0,256500.0,261000.0,252000.0,252500.0,254500.0,250500.0,258000.0,265000.0,290000.0,291500.0,276000.0,268500.0,269000.0,264000.0,270500.0,269000.0,275500.0,278500.0,272500.0,271500.0,264500.0,264000.0,262000.0,259500.0,257500.0,257500.0,261500.0,261500.0,261500.0,254500.0,266000.0,266500.0,283500.0,315000.0,315500.0,307000.0,302500.0,295500.0,301500.0,293500.0,286000.0,286000.0,282500.0,288500.0,289000.0,287000.0,289000.0,286000.0,293500.0,296500.0,298500.0,304500.0,308000.0,350500.0,340500.0,366000.0,367000.0,406000.0,411500.0,422000.0,413000.0,480000.0,479000.0,549000.0,529000.0,510000.0,492500.0,488500.0,492500.0,528000.0,500000.0,478000.0,491500.0,504000.0,488500.0,467500.0,478000.0,480500.0,509000.0,506000.0,499000.0,513000.0,509000.0,523000.0,524000.0,572000.0,609000.0,674000.0,595000.0,501000.0,548000.0,553000.0,507000.0,525000.0,530000.0,521000.0,517000.0,506000.0,522000.0,545000.0,522000.0,517000.0,485000.0,492000.0,501000.0,490000.0,495000.0,469500.0,445500.0,488000.0,465500.0,471000.0,469000.0,473000.0,508000.0,489500.0,489500.0,478500.0,491500.0,508000.0,534000.0,538000.0,527000.0,546000.0,541000.0,532000.0,513000.0,524000.0,555000.0,556000.0,531000.0,539000.0,550000.0,572000.0,613000.0,646000.0,646000.0,710000.0,712000.0,700000.0,663000.0,604000.0,592000.0,666000.0,655000.0,689000.0,681000.0,677000.0,723000.0,750000.0,729000.0,700000.0,700000.0,639000.0,639000.0,602000.0,597000.0,607000.0,647000.0,640000.0,618000.0,601000.0,613000.0,581000.0,511000.0,509000.0,503000.0,480500.0,497000.0,495000.0,487500.0,482000.0,492000.0,502000.0,479500.0,462500.0,445500.0,457500.0,444000.0,424500.0,434000.0,425000.0,399000.0,399000.0,418000.0,432000.0,401000.0,403000.0,364000.0,353500.0,351000.0,388000.0,393000.0,392500.0,404500.0,400000.0,395500.0,408000.0,403000.0,409500.0,418500.0,453000.0,435000.0,414000.0,417500.0,415000.0,414000.0,421000.0,408000.0,398000.0,399500.0,403500.0,400500.0,378000.0,383500.0,383500.0,393000.0,385000.0,388000.0,389000.0,382500.0,367500.0,369500.0,362500.0,364500.0,366500.0,361500.0,362000.0,357000.0,354000.0,350500.0,347000.0,349000.0,347000.0,348500.0,336500.0,324500.0,318500.0,311500.0,313500.0,289500.0,314000.0,324500.0,305500.0,310000.0,300500.0,293000.0,289000.0,291500.0,297000.0,292000.0,278500.0,286500.0,279000.0,287500.0,293000.0,281000.0,268000.0,274000.0,275000.0,266500.0,270500.0,264000.0,257000.0,268000.0,267500.0,253000.0,248500.0,264500.0,265000.0,259500.0,270500.0]},{"code":"030200","name":"KT","sector":"통신","per":9.21,"pbr":0.58,"div":5.23,"dps":2400,"eps":4862,"bps":77504,"mktcap":"11.3","peerPer":9.8,"peerPbr":null,"target":73850,"summary":"RSI 23 과매도, 배당 5.2%로 방어적 매력. 다만 200일선 아래 하락 추세가 길어지고 있어 반등 확인이 필요합니다.","news":[{"tag":"배당","text":"주당 2,400원·배당수익률 5.23%. 2028년까지 자사주 1조원 매입 계획 유지(3Q 컨콜)."},{"tag":"리포트","text":"하나증권 '4만5,000원 수준에서는 매수 망설일 이유 없다', 목표주가 유지(11/24)."},{"tag":"공시","text":"KT클라우드 조단위 투자유치 보도에 '검토 중, 확정된 바 없다'고 해명(11/17). 12/16 재공시 예정."},{"tag":"리스크","text":"RSI 23.3 과매도. 200일선 55,190원 대비 -19%로 하락 추세 지속."}],"price":44800.0,"chg":-2.29,"high52":69400.0,"low52":43400.0,"series":[34150.0,33600.0,33550.0,33500.0,33650.0,33700.0,33700.0,33450.0,33550.0,33550.0,33150.0,33300.0,33800.0,33750.0,33700.0,33650.0,33700.0,34200.0,34800.0,34750.0,35100.0,35400.0,36900.0,38550.0,38000.0,37850.0,38150.0,37650.0,38350.0,37850.0,38450.0,39450.0,42200.0,41450.0,39500.0,39900.0,39400.0,38700.0,38100.0,38400.0,39100.0,38600.0,38900.0,39000.0,39050.0,38750.0,38250.0,37950.0,38000.0,38550.0,38250.0,38000.0,37350.0,37300.0,38350.0,38750.0,37850.0,38800.0,38650.0,37950.0,37700.0,37700.0,37000.0,36050.0,36350.0,36150.0,36850.0,36400.0,35400.0,34600.0,34450.0,34250.0,33600.0,33650.0,33300.0,34300.0,34550.0,34650.0,34100.0,34500.0,34600.0,34600.0,34600.0,34500.0,35600.0,35400.0,35650.0,35800.0,35800.0,36550.0,37700.0,37250.0,37100.0,36800.0,37050.0,36250.0,36350.0,36600.0,36150.0,36000.0,36150.0,36600.0,37250.0,36450.0,36750.0,37150.0,36800.0,36800.0,36800.0,36350.0,36400.0,36200.0,36300.0,36400.0,36500.0,37000.0,36850.0,37250.0,37200.0,36450.0,37400.0,36900.0,36250.0,36500.0,36550.0,36350.0,36000.0,36150.0,36000.0,36700.0,36500.0,36300.0,36500.0,36500.0,37900.0,37100.0,37500.0,37900.0,37700.0,37950.0,38650.0,39100.0,38950.0,39850.0,38750.0,38850.0,37050.0,36550.0,37800.0,39250.0,38100.0,38000.0,38700.0,38300.0,37900.0,38250.0,38700.0,39150.0,39300.0,39600.0,39900.0,40100.0,39300.0,39000.0,38600.0,39100.0,40200.0,39800.0,41200.0,41200.0,41400.0,41100.0,41250.0,41450.0,42050.0,41700.0,41800.0,41350.0,41400.0,40500.0,41500.0,40300.0,40200.0,39750.0,40800.0,41050.0,40150.0,40300.0,40200.0,40900.0,41000.0,42700.0,42800.0,42900.0,42950.0,44000.0,42700.0,43800.0,44200.0,43750.0,43750.0,44350.0,44350.0,44300.0,44100.0,43050.0,43900.0,42850.0,41100.0,44400.0,43500.0,42600.0,41150.0,41500.0,41800.0,41750.0,43300.0,44000.0,44500.0,44800.0,45500.0,47600.0,48850.0,48800.0,49000.0,48650.0,47850.0,47700.0,45300.0,44300.0,43850.0,44600.0,44250.0,44850.0,46450.0,45750.0,45800.0,44950.0,44700.0,45700.0,46100.0,45500.0,45000.0,43850.0,43950.0,44500.0,44200.0,43850.0,43800.0,45000.0,44200.0,44400.0,43900.0,44400.0,44850.0,45950.0,46050.0,46000.0,45550.0,45650.0,47000.0,48000.0,46900.0,46700.0,46450.0,46050.0,45350.0,45850.0,46000.0,45150.0,45200.0,46950.0,46800.0,46550.0,46800.0,47650.0,47200.0,48000.0,47800.0,48050.0,47650.0,47000.0,47700.0,47400.0,48500.0,48050.0,48250.0,47550.0,48850.0,48400.0,49100.0,49800.0,49500.0,50700.0,50700.0,49750.0,49600.0,50000.0,49800.0,49850.0,49850.0,49600.0,48700.0,48250.0,48700.0,49300.0,48350.0,47450.0,46350.0,48200.0,47350.0,47300.0,47650.0,48450.0,49050.0,49200.0,49600.0,49250.0,49700.0,49150.0,50200.0,51100.0,51600.0,51800.0,53500.0,52000.0,50800.0,51500.0,50800.0,51000.0,51300.0,51000.0,51400.0,52000.0,51900.0,51300.0,50700.0,50000.0,51700.0,51300.0,50800.0,51000.0,50800.0,49400.0,49850.0,50300.0,50600.0,50900.0,51600.0,51800.0,51600.0,53100.0,53000.0,52400.0,51900.0,51800.0,51000.0,52100.0,52400.0,52400.0,54400.0,55700.0,57300.0,56800.0,56500.0,57700.0,57100.0,56200.0,55600.0,56200.0,58100.0,57800.0,58400.0,58000.0,57800.0,57200.0,56600.0,57300.0,56400.0,56400.0,55900.0,55300.0,54600.0,54600.0,55200.0,54000.0,54300.0,54800.0,54400.0,54300.0,53700.0,54100.0,55000.0,54100.0,55700.0,55300.0,55400.0,55700.0,55400.0,55000.0,55100.0,55100.0,54200.0,54000.0,54100.0,53300.0,52100.0,52300.0,52900.0,53500.0,53100.0,51800.0,51100.0,52200.0,51300.0,51700.0,51300.0,51000.0,51400.0,50800.0,49700.0,49850.0,50800.0,51200.0,51100.0,50500.0,50500.0,50500.0,51200.0,49850.0,49850.0,48600.0,49350.0,50000.0,49950.0,50500.0,50500.0,50600.0,49800.0,49650.0,49700.0,49700.0,49750.0,49350.0,49150.0,49200.0,48400.0,48450.0,49350.0,48250.0,48700.0,49300.0,49450.0,50700.0,50100.0,49900.0,49200.0,49600.0,49300.0,49900.0,50100.0,49850.0,50200.0,50400.0,50400.0,50400.0,50600.0,53000.0,53100.0,53100.0,51500.0,51600.0,51800.0,51300.0,52600.0,52800.0,54200.0,53900.0,53000.0,53800.0,53100.0,53100.0,53400.0,53400.0,53000.0,52600.0,51300.0,51600.0,52800.0,52400.0,51500.0,52000.0,51700.0,52900.0,53000.0,53300.0,53900.0,53600.0,55200.0,55300.0,54900.0,54200.0,54400.0,56000.0,55900.0,56100.0,56900.0,55200.0,56500.0,57200.0,56100.0,56300.0,59300.0,60700.0,62700.0,64300.0,64500.0,65900.0,68900.0,67700.0,65700.0,65500.0,64600.0,63800.0,63000.0,54900.0,57800.0,59000.0,59500.0,60800.0,59900.0,61500.0,59600.0,58900.0,60000.0,60400.0,59300.0,60700.0,57800.0,59300.0,60100.0,59700.0,60800.0,60800.0,60400.0,61400.0,59400.0,59500.0,60200.0,59100.0,61000.0,61000.0,62100.0,63000.0,64200.0,64400.0,63600.0,63900.0,62800.0,62700.0,61800.0,62000.0,61700.0,61100.0,60900.0,60500.0,60900.0,60600.0,58500.0,59500.0,59300.0,58800.0,59900.0,59300.0,61600.0,58700.0,57000.0,56200.0,55800.0,55700.0,55800.0,54200.0,53400.0,51900.0,52800.0,53200.0,53900.0,54500.0,54000.0,53900.0,53800.0,55900.0,60000.0,54800.0,55400.0,56600.0,55300.0,53500.0,53300.0,52300.0,52400.0,51700.0,52000.0,52200.0,52700.0,52900.0,53700.0,54300.0,53700.0,54500.0,55500.0,55400.0,58000.0,54200.0,52700.0,51600.0,52000.0,52400.0,53500.0,52700.0,52300.0,52700.0,54100.0,54400.0,53900.0,53800.0,52800.0,51900.0,52200.0,52300.0,52500.0,53500.0,53300.0,52400.0,52800.0,52700.0,52500.0,53400.0,54300.0,52600.0,52100.0,52400.0,52500.0,53000.0,53300.0,53900.0,54500.0,53400.0,54000.0,53800.0,53800.0,54300.0,54900.0,54300.0,53100.0,52000.0,52700.0,53100.0,52800.0,53000.0,53600.0,53200.0,53300.0,53200.0,52900.0,52800.0,52600.0,52200.0,51900.0,52000.0,51600.0,51100.0,51300.0,49600.0,49450.0,49950.0,51000.0,50400.0,50600.0,51000.0,49200.0,47500.0,46700.0,45800.0,44800.0,45250.0,45850.0,46250.0,46800.0,47500.0,49700.0,51500.0,52500.0,52800.0,50900.0,50800.0,51700.0,51000.0,51600.0,50900.0,49950.0,47700.0,45850.0,44200.0,44850.0,46200.0,45850.0,44800.0]},{"code":"035420","name":"NAVER","sector":"인터넷 · AI","per":15.09,"pbr":0.89,"div":1.64,"dps":2630,"eps":10869,"bps":183891,"mktcap":"26.0","peerPer":18.1,"peerPbr":1.01,"target":292048,"summary":"3분기 이익 감소로 목표주가가 잇달아 내려간 상태. PBR 0.89배와 AI 팩토리 모멘텀이 변수입니다.","news":[{"tag":"실적","text":"3Q26 매출 3조4,724억원(+10.7%), 영업이익 4,513억원(-20.9%) — AI 인프라·마케팅 비용 증가 영향."},{"tag":"리포트","text":"한국투자 30만원·하나 34만원으로 목표주가 하향, 투자의견 '매수'는 유지."},{"tag":"모멘텀","text":"AI 팩토리 20MW 장기계약(연 4,000~5,000억원 매출 전망), 200MW 이상 데이터센터 상면 확보."},{"tag":"가격","text":"52주 최고 308,500원 대비 -47%, 1년 -35%."}],"price":164000.0,"chg":2.24,"high52":304000.0,"low52":144900.0,"series":[227500.0,222000.0,223000.0,220500.0,226500.0,229500.0,231000.0,231500.0,230500.0,229500.0,230000.0,219000.0,216500.0,215500.0,217000.0,218000.0,218000.0,213500.0,216500.0,212000.0,209500.0,200500.0,202500.0,221500.0,208000.0,205500.0,204500.0,206000.0,205000.0,202500.0,203500.0,205000.0,203500.0,202500.0,202500.0,202000.0,200500.0,199900.0,200000.0,204000.0,195000.0,192000.0,188700.0,189800.0,189000.0,188000.0,189900.0,190500.0,188400.0,186800.0,186100.0,184100.0,182600.0,183100.0,184400.0,188900.0,188000.0,188900.0,189300.0,187100.0,187400.0,194300.0,192000.0,193400.0,194300.0,193100.0,189900.0,189000.0,183600.0,185900.0,182800.0,179500.0,179600.0,180700.0,182400.0,180900.0,180100.0,183700.0,182700.0,181500.0,184700.0,184400.0,188800.0,194600.0,194800.0,190900.0,188300.0,188600.0,184300.0,184400.0,188500.0,187300.0,184000.0,183200.0,182600.0,182100.0,179000.0,179000.0,177400.0,175300.0,170400.0,170200.0,172700.0,176800.0,177100.0,175400.0,170700.0,170200.0,168400.0,169900.0,169900.0,166100.0,166800.0,167900.0,167200.0,167600.0,168900.0,166400.0,168400.0,165400.0,166900.0,162900.0,159900.0,159800.0,159800.0,168100.0,170500.0,170700.0,177500.0,176100.0,174800.0,176300.0,171600.0,173400.0,174900.0,172200.0,172700.0,170600.0,171700.0,178000.0,174800.0,175000.0,173300.0,174000.0,175000.0,171400.0,156100.0,158400.0,162700.0,162700.0,163700.0,160300.0,156400.0,157300.0,157500.0,156600.0,156600.0,156400.0,164700.0,164900.0,170700.0,167900.0,163800.0,164900.0,169100.0,166600.0,165300.0,157500.0,159800.0,157200.0,155000.0,159000.0,156400.0,160000.0,160100.0,160600.0,159900.0,166700.0,168000.0,166200.0,170900.0,170400.0,169400.0,168200.0,170700.0,166100.0,166200.0,172400.0,173300.0,171400.0,175200.0,177000.0,175000.0,176800.0,176800.0,171200.0,172500.0,172100.0,167800.0,170400.0,169200.0,174400.0,170000.0,169700.0,175700.0,176500.0,176300.0,179700.0,174600.0,176000.0,181400.0,182200.0,188500.0,190000.0,190800.0,193000.0,193100.0,189700.0,190000.0,193200.0,195600.0,203000.0,204500.0,206500.0,203500.0,209000.0,202500.0,204000.0,204500.0,201500.0,209000.0,218000.0,208000.0,210000.0,214000.0,209500.0,212500.0,209500.0,210000.0,201000.0,202500.0,199900.0,197700.0,198900.0,193800.0,200500.0,208500.0,208000.0,207000.0,202500.0,202000.0,204000.0,202000.0,206500.0,206500.0,209000.0,205000.0,204500.0,204000.0,204500.0,204000.0,216500.0,217000.0,218500.0,229000.0,232000.0,225500.0,227500.0,228500.0,225000.0,220000.0,221000.0,221000.0,222500.0,222000.0,221500.0,226500.0,228000.0,228500.0,231500.0,219000.0,207000.0,205500.0,207500.0,219000.0,213000.0,215000.0,212500.0,214000.0,216000.0,208000.0,211000.0,209000.0,208000.0,208000.0,209500.0,207000.0,207500.0,204000.0,197800.0,194700.0,191000.0,196700.0,195600.0,198600.0,197800.0,191800.0,179600.0,176900.0,183900.0,183000.0,182700.0,183900.0,184400.0,183600.0,187500.0,187500.0,193700.0,192900.0,191500.0,193500.0,195500.0,196500.0,200500.0,197400.0,199100.0,188700.0,191000.0,190200.0,188200.0,191200.0,189200.0,187800.0,185400.0,185000.0,184800.0,183200.0,183100.0,188000.0,183800.0,187700.0,189300.0,187500.0,186500.0,185500.0,191200.0,198500.0,200000.0,201000.0,198900.0,200500.0,209500.0,206500.0,243500.0,252000.0,269500.0,290000.0,290500.0,283500.0,261000.0,257500.0,262500.0,262000.0,252000.0,253000.0,249000.0,256000.0,258000.0,254000.0,259500.0,253000.0,249000.0,249500.0,250000.0,243500.0,242000.0,240000.0,235000.0,231500.0,227000.0,234500.0,235500.0,233000.0,234000.0,235000.0,225000.0,232500.0,232000.0,228500.0,235500.0,229500.0,223000.0,223000.0,225000.0,224500.0,226000.0,225500.0,221500.0,223000.0,222000.0,225500.0,221000.0,218000.0,217500.0,214500.0,215500.0,225000.0,221000.0,227000.0,229000.0,228000.0,231000.0,233500.0,233000.0,236000.0,234000.0,235000.0,233500.0,238500.0,234000.0,232000.0,231000.0,228000.0,254000.0,256500.0,274500.0,268500.0,254500.0,253000.0,267500.0,262500.0,258000.0,258500.0,260500.0,255500.0,258000.0,254500.0,255500.0,242500.0,247000.0,251000.0,253000.0,265000.0,255500.0,267500.0,274500.0,267000.0,278500.0,264000.0,260000.0,260000.0,263000.0,263500.0,265500.0,253500.0,255000.0,249000.0,248500.0,257000.0,262500.0,261000.0,253000.0,263500.0,251500.0,244000.0,243000.0,243000.0,246500.0,247000.0,249500.0,249000.0,248000.0,244500.0,243500.0,244500.0,240500.0,231500.0,231000.0,230500.0,235500.0,238000.0,237000.0,236500.0,231500.0,242000.0,242500.0,247000.0,249500.0,260000.0,252500.0,251000.0,254000.0,255500.0,264500.0,259500.0,247500.0,245500.0,238000.0,244000.0,238500.0,245500.0,266000.0,272500.0,281500.0,277500.0,287000.0,275000.0,268000.0,269000.0,264500.0,257000.0,249000.0,250000.0,254000.0,257500.0,255500.0,252500.0,253000.0,254500.0,255500.0,255000.0,253000.0,260500.0,254500.0,236000.0,208000.0,220000.0,222500.0,218500.0,220500.0,222000.0,222000.0,223000.0,218000.0,224000.0,226500.0,220500.0,221500.0,209000.0,213500.0,215500.0,211500.0,212500.0,207000.0,201500.0,210000.0,195800.0,197500.0,196800.0,195900.0,201500.0,201500.0,202000.0,199000.0,201500.0,211000.0,218500.0,216500.0,213500.0,214000.0,214000.0,217500.0,214000.0,215000.0,219500.0,220000.0,211000.0,209000.0,208000.0,207500.0,215000.0,211500.0,204000.0,201500.0,213000.0,203500.0,200000.0,198100.0,191500.0,199500.0,203000.0,200000.0,198800.0,205000.0,234000.0,271500.0,280500.0,267500.0,255500.0,279000.0,257000.0,227000.0,224000.0,247000.0,248000.0,242000.0,243500.0,235000.0,229500.0,222000.0,202500.0,199400.0,199700.0,196400.0,204000.0,199000.0,197400.0,199900.0,195800.0,196600.0,197200.0,192700.0,184400.0,191300.0,188000.0,183200.0,189600.0,190000.0,185900.0,193000.0,196900.0,220000.0,207500.0,225000.0,210000.0,201500.0,194700.0,208000.0,207500.0,226500.0,229000.0,226000.0,210000.0,211500.0,214000.0,215500.0,226500.0,228000.0,217000.0,208000.0,219500.0,222000.0,223500.0,220500.0,220000.0,216500.0,220500.0,217000.0,215000.0,209000.0,207500.0,213500.0,218000.0,214500.0,210000.0,208000.0,206500.0,203000.0,205500.0,202000.0,200500.0,197500.0,198400.0,201000.0,196000.0,196300.0,194900.0,193500.0,191900.0,192200.0,191900.0,188100.0,183200.0,179700.0,176900.0,180000.0,171400.0,180300.0,182600.0,176800.0,179300.0,175500.0,172600.0,174400.0,181400.0,178400.0,175100.0,170800.0,175900.0,171200.0,172100.0,183900.0,188600.0,184700.0,192300.0,195500.0,180900.0,173600.0,171900.0,168600.0,171700.0,169200.0,160800.0,150800.0,152700.0,156000.0,160400.0,164000.0]},{"code":"105560","name":"KB금융","sector":"은행 · 금융지주","per":8.69,"pbr":0.84,"div":3.49,"dps":5070,"eps":16744,"bps":172316,"mktcap":"51.6","peerPer":7.5,"peerPbr":0.65,"target":219380,"summary":"은행주 가운데 가장 견조한 흐름. 3분기 누적 순이익 +10%, 주주환원율 55% 전망에 PBR 0.84배입니다.","news":[{"tag":"실적","text":"3Q 누적 지배주주순이익 5조6,435억원(+10.2%). 국고채 담합 과징금 3,322억 반영으로 정정 공시(11/12)."},{"tag":"주주환원","text":"CET1 13.80%, 2026년 총주주환원율 55% 전망. 키움증권 목표주가 230,000원 유지(11/25)."},{"tag":"수급","text":"코스피 급락에도 금융지주는 상대적으로 견조. 은행주 가운데 ROE 최상위."},{"tag":"리스크","text":"고금리 장기화 시 대출 부실 우려. 52주 최고 대비 -25%."}],"price":145500.0,"chg":0.0,"high52":194500.0,"low52":121400.0,"series":[53600.0,52600.0,51700.0,51300.0,52200.0,52400.0,51300.0,51000.0,51000.0,51600.0,51100.0,49800.0,49400.0,49500.0,49300.0,51400.0,52100.0,52900.0,53800.0,55600.0,55900.0,56600.0,61300.0,66300.0,62700.0,63100.0,64700.0,67600.0,69700.0,67300.0,65100.0,67700.0,68800.0,67900.0,65100.0,64900.0,65800.0,62500.0,62400.0,62300.0,63500.0,69000.0,69500.0,69800.0,71200.0,70900.0,70700.0,73200.0,77500.0,78600.0,76200.0,74400.0,72500.0,73800.0,76100.0,74900.0,72000.0,71800.0,69000.0,70300.0,69500.0,68400.0,68900.0,67300.0,69500.0,69100.0,69300.0,69100.0,68300.0,66300.0,66200.0,64400.0,63100.0,64000.0,63700.0,69500.0,70200.0,68900.0,69300.0,76000.0,76600.0,75600.0,72300.0,73700.0,73900.0,77700.0,76600.0,79300.0,81600.0,79600.0,81000.0,80100.0,81600.0,81600.0,79100.0,77300.0,76900.0,76300.0,77100.0,78100.0,78700.0,79400.0,79300.0,77600.0,77400.0,79600.0,78400.0,78400.0,79100.0,81000.0,80900.0,78300.0,77400.0,78900.0,80800.0,78600.0,80000.0,79000.0,78900.0,78500.0,78500.0,79600.0,83200.0,84400.0,85900.0,88200.0,86900.0,85200.0,83600.0,85400.0,87000.0,85700.0,84100.0,84100.0,84400.0,84800.0,86500.0,88300.0,84600.0,84000.0,87900.0,90800.0,89300.0,87900.0,88300.0,83200.0,76800.0,79500.0,81600.0,82200.0,81900.0,82500.0,84600.0,84400.0,84000.0,87000.0,89900.0,87200.0,86500.0,86800.0,88500.0,87800.0,85800.0,86900.0,85900.0,87700.0,87000.0,83600.0,84600.0,83300.0,82300.0,82900.0,77900.0,78100.0,81800.0,82500.0,83600.0,85000.0,82000.0,78100.0,81200.0,83800.0,80900.0,81300.0,82600.0,87300.0,89400.0,89900.0,91300.0,97200.0,95600.0,95400.0,93700.0,94400.0,93500.0,94100.0,94300.0,93200.0,101000.0,96200.0,95500.0,93900.0,90300.0,91800.0,90700.0,91000.0,94000.0,94100.0,93200.0,92700.0,92700.0,91000.0,89900.0,89600.0,91500.0,91600.0,95600.0,97300.0,98400.0,98000.0,96000.0,98700.0,98000.0,96200.0,96400.0,101200.0,95400.0,85800.0,85300.0,82800.0,83300.0,85400.0,87000.0,85000.0,84600.0,84400.0,87200.0,86900.0,85800.0,87000.0,86500.0,85500.0,85000.0,82900.0,83400.0,83800.0,85500.0,85600.0,85600.0,86700.0,87800.0,89300.0,88800.0,89900.0,90400.0,88600.0,88800.0,88900.0,89400.0,88600.0,88900.0,91700.0,88800.0,91300.0,91000.0,84900.0,86000.0,84900.0,84200.0,82000.0,79400.0,79700.0,81000.0,82100.0,82200.0,82700.0,82700.0,82000.0,81400.0,81500.0,80800.0,78300.0,77900.0,76600.0,78600.0,77700.0,78500.0,77400.0,76900.0,78600.0,78300.0,78900.0,80200.0,81200.0,82300.0,81300.0,81800.0,81900.0,81800.0,80200.0,78700.0,79000.0,79600.0,80500.0,77100.0,77700.0,72300.0,70500.0,70900.0,75900.0,75200.0,76100.0,78000.0,80000.0,80300.0,82400.0,82800.0,83400.0,85000.0,84600.0,86900.0,86600.0,87800.0,90200.0,93200.0,93600.0,94500.0,92000.0,92200.0,92600.0,93400.0,93600.0,93600.0,95000.0,96300.0,98000.0,96700.0,99000.0,102000.0,101900.0,101000.0,102700.0,104300.0,100000.0,107900.0,106300.0,110700.0,110900.0,107200.0,105900.0,106000.0,107800.0,107100.0,107000.0,106700.0,106500.0,107600.0,112300.0,109500.0,109900.0,110600.0,110900.0,110800.0,113500.0,116900.0,112100.0,114400.0,122000.0,118400.0,116800.0,117300.0,118500.0,119600.0,113600.0,114800.0,113400.0,115000.0,114600.0,115300.0,117200.0,118800.0,110500.0,111300.0,112800.0,110900.0,106000.0,108400.0,112400.0,115600.0,115000.0,113500.0,112700.0,114100.0,114600.0,113200.0,107200.0,109400.0,109500.0,109700.0,108400.0,110300.0,108300.0,108500.0,109100.0,108200.0,107100.0,108800.0,110200.0,108500.0,108600.0,106700.0,109900.0,117600.0,117600.0,119300.0,119600.0,117800.0,118300.0,117400.0,116500.0,116900.0,115400.0,115300.0,114300.0,112700.0,115700.0,115500.0,116300.0,116800.0,112800.0,111600.0,110900.0,115700.0,113700.0,114000.0,118200.0,116500.0,115800.0,114800.0,113800.0,118000.0,116400.0,116000.0,115800.0,116600.0,118000.0,121900.0,121600.0,125300.0,123700.0,129000.0,130700.0,134700.0,133500.0,129500.0,126800.0,122500.0,122200.0,121200.0,120500.0,120300.0,121700.0,124700.0,123700.0,124800.0,126300.0,132000.0,131700.0,128800.0,130700.0,127900.0,126000.0,124500.0,124800.0,126100.0,124900.0,123700.0,124300.0,124000.0,125200.0,126500.0,126000.0,126100.0,124600.0,125600.0,124700.0,123300.0,126800.0,126400.0,124700.0,123500.0,126600.0,125500.0,128500.0,128900.0,130100.0,130900.0,129500.0,133100.0,136800.0,134700.0,135600.0,135500.0,143000.0,137900.0,137800.0,135200.0,133700.0,138800.0,142100.0,139500.0,149300.0,151400.0,155500.0,164500.0,168500.0,167900.0,166500.0,168800.0,168700.0,166700.0,167700.0,165300.0,159000.0,153500.0,137700.0,149000.0,147400.0,142600.0,147400.0,151300.0,149200.0,148900.0,149300.0,150700.0,154700.0,155700.0,155200.0,145300.0,146900.0,149400.0,152200.0,152200.0,145900.0,141900.0,148300.0,146500.0,145500.0,147900.0,146700.0,156000.0,154200.0,158300.0,156600.0,155900.0,158200.0,162300.0,162300.0,160900.0,160400.0,157400.0,158000.0,157400.0,157400.0,158800.0,160600.0,160500.0,157800.0,158900.0,161200.0,161700.0,158800.0,153600.0,152000.0,156000.0,155600.0,153000.0,152800.0,151700.0,155800.0,160000.0,157300.0,153800.0,149700.0,150600.0,152100.0,156600.0,164200.0,171600.0,151500.0,154800.0,154000.0,151500.0,161200.0,169600.0,172000.0,164000.0,163100.0,158300.0,157000.0,153700.0,151800.0,151900.0,149300.0,153700.0,159000.0,158500.0,165000.0,170100.0,170900.0,173200.0,171000.0,171400.0,184400.0,186200.0,180000.0,181600.0,181100.0,168800.0,174000.0,175100.0,176300.0,171500.0,172600.0,165200.0,160100.0,167400.0,168500.0,169500.0,168800.0,170700.0,171500.0,175800.0,171700.0,166600.0,166000.0,168100.0,168500.0,168500.0,166400.0,160000.0,164300.0,163100.0,166400.0,166600.0,168100.0,171600.0,173300.0,171200.0,169100.0,177900.0,172000.0,175900.0,173700.0,172000.0,173400.0,177900.0,181200.0,176400.0,177000.0,179700.0,175700.0,177900.0,176200.0,174100.0,173800.0,173200.0,169800.0,167400.0,168400.0,167400.0,168300.0,163400.0,162200.0,161300.0,159400.0,159900.0,160300.0,160700.0,161400.0,160600.0,157900.0,153000.0,148200.0,147900.0,153800.0,157000.0,154600.0,153800.0,152000.0,154700.0,158200.0,152200.0,152500.0,152800.0,153300.0,152300.0,158000.0,161700.0,156100.0,156200.0,154500.0,153100.0,145000.0,149500.0,148600.0,145500.0,145500.0]}]};
+
+/* ---------- utils ---------- */
+const $ = (s, r) => (r || document).querySelector(s);
+const fmt = n => (n == null || isNaN(n)) ? '-' : Math.round(n).toLocaleString('ko-KR');
+const fmt2 = n => (n == null || isNaN(n)) ? '-' : Number(n).toLocaleString('ko-KR', {minimumFractionDigits:2, maximumFractionDigits:2});
+const fmtAxis = v => v >= 100000000 ? (v / 100000000).toFixed(1) + '억' : (v >= 10000 ? (v / 10000).toFixed(1) + '만' : Math.round(v).toLocaleString('ko-KR'));
+const pctS = v => (v > 0 ? '+' : '') + (Math.round(v * 100) / 100).toFixed(2) + '%';
+const cls = v => v > 0 ? 'up' : (v < 0 ? 'down' : 'flat');
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- series math ---------- */
+function maSeries(src, n){
+  const out = []; let sum = 0;
+  for (let i = 0; i < src.length; i++){
+    sum += src[i];
+    if (i >= n) sum -= src[i - n];
+    out.push(i >= n - 1 ? sum / n : null);
+  }
+  return out;
+}
+function rsi(src, n){
+  n = n || 14;
+  if (src.length < n + 1) return null;
+  let g = 0, l = 0;
+  for (let i = src.length - n; i < src.length; i++){
+    const d = src[i] - src[i - 1];
+    if (d > 0) g += d; else l -= d;
+  }
+  if (l === 0) return 100;
+  const rs = (g / n) / (l / n);
+  return 100 - 100 / (1 + rs);
+}
+function annVol(src){
+  const n = Math.min(src.length - 1, 245);
+  const r = [];
+  for (let i = src.length - n; i < src.length; i++) r.push(src[i] / src[i-1] - 1);
+  const m = r.reduce((a, b) => a + b, 0) / r.length;
+  const v = r.reduce((a, b) => a + (b - m) * (b - m), 0) / Math.max(1, r.length - 1);
+  return Math.sqrt(v) * Math.sqrt(245);
+}
+
+/* ---------- storage ---------- */
+const LSKEY = 'krradar.v1';
+function loadStore(){
+  let s = {};
+  try { s = JSON.parse(localStorage.getItem(LSKEY) || '{}') || {}; } catch (e) { s = {}; }
+  s.custom = s.custom || []; s.pos = s.pos || {}; s.memo = s.memo || {};
+  s.checks = s.checks || {}; s.theme = s.theme || 'dark'; s.sel = s.sel || null;
+  s.period = s.period || 245; s.horizon = s.horizon || 12;
+  return s;
+}
+const store = loadStore();
+function persist(){ try { localStorage.setItem(LSKEY, JSON.stringify(store)); } catch (e) {} }
+
+/* ---------- model ---------- */
+const BASE = DATA.stocks.slice();
+function allStocks(){ return BASE.concat(store.custom); }
+function findStock(code){ return allStocks().filter(s => s.code === code)[0]; }
+let current = null;
+
+function metrics(s){
+  if (!s.series || s.series.length < 30) return null;
+  const ser = s.series;
+  const m20 = maSeries(ser, 20), m60 = maSeries(ser, 60), m120 = maSeries(ser, 120), m200 = maSeries(ser, 200);
+  return {
+    price: ser[ser.length - 1],
+    ma20: m20[m20.length - 1], ma60: m60[m60.length - 1],
+    ma120: m120[m120.length - 1], ma200: m200[m200.length - 1],
+    rsi: rsi(ser, 14), vol: annVol(ser),
+    m20, m60, m120, m200
+  };
+}
+
+function scoreOf(s){
+  const m = metrics(s);
+  const out = {trend: 0, value: 0, div: 0, rsi: 0, total: 0, parts: [], partial: false};
+
+  /* trend 35 */
+  if (m && m.ma200){
+    const t1 = clamp((m.price / m.ma60 - 0.85) / 0.30, 0, 1) * 10;
+    const t2 = clamp((m.ma60 / m.ma120 - 0.90) / 0.20, 0, 1) * 10;
+    const t3 = clamp((m.ma120 / m.ma200 - 0.95) / 0.10, 0, 1) * 8;
+    const t4 = clamp((m.price / m.ma200 - 0.85) / 0.30, 0, 1) * 7;
+    out.trend = t1 + t2 + t3 + t4;
+    const aligned = m.price > m.ma60 && m.ma60 > m.ma120 && m.ma120 > m.ma200;
+    out.trendText = aligned
+      ? '정배열 (종가 > 60일선 > 120일선 > 200일선)'
+      : (m.price < m.ma60 && m.ma60 <= m.ma120
+          ? '역배열 (종가 < 60일선 ≤ 120일선) — 하락 추세'
+          : '혼조 (종가 ' + (m.price >= m.ma60 ? '>' : '<') + ' 60일선, 120·200일선 배열 확인)');
+  } else {
+    out.trend = 17.5; out.partial = true;
+    out.trendText = '이동평균 데이터 없음 — 중립 처리';
+  }
+
+  /* value 30 */
+  let perS;
+  const p = s.per;
+  if (p == null) { perS = 7.5; out.partial = true; }
+  else if (p <= 6) perS = 15; else if (p <= 9) perS = 13; else if (p <= 12) perS = 10;
+  else if (p <= 15) perS = 7; else if (p <= 20) perS = 4; else perS = 2;
+  if (p != null && s.peerPer){
+    if (p < s.peerPer * 0.8) perS = Math.min(15, perS + 2);
+    else if (p > s.peerPer * 1.3) perS = Math.max(0, perS - 2);
+  }
+  let pbrS;
+  const b = s.pbr;
+  if (b == null) { pbrS = 7.5; out.partial = true; }
+  else if (b < 0.6) pbrS = 15; else if (b < 0.9) pbrS = 13; else if (b < 1.3) pbrS = 11;
+  else if (b < 1.8) pbrS = 8; else if (b < 2.5) pbrS = 5; else pbrS = 3;
+  if (b != null && s.peerPbr && b < s.peerPbr * 0.9) pbrS = Math.min(15, pbrS + 1);
+  out.value = Math.min(30, perS + pbrS);
+
+  /* dividend 20 */
+  const d = s.div;
+  if (d == null) { out.div = 10; out.partial = true; }
+  else if (d >= 5) out.div = 20; else if (d >= 4) out.div = 18; else if (d >= 3) out.div = 15;
+  else if (d >= 2) out.div = 12; else if (d >= 1) out.div = 8; else if (d >= 0.5) out.div = 5; else out.div = 2;
+
+  /* rsi 15 */
+  const r = m && m.rsi != null ? m.rsi : null;
+  if (r == null) { out.rsi = 7.5; out.partial = true; }
+  else if (r < 20) out.rsi = 10; else if (r <= 30) out.rsi = 13;
+  else if (r <= 45) out.rsi = 15; else if (r <= 60) out.rsi = 11;
+  else if (r <= 70) out.rsi = 6; else out.rsi = 2;
+
+  out.total = Math.round(out.trend + out.value + out.div + out.rsi);
+  out.verdict = out.total >= 70 ? 'buy' : (out.total >= 45 ? 'hold' : 'cut');
+  out.verdictText = out.total >= 70 ? '분할매수 관심' : (out.total >= 45 ? '중립 관망' : '분할익절 고려');
+  return out;
+}
+
+function scenarios(s, months){
+  const p = s.price;
+  const t = s.target && s.target > 0 ? s.target : p * 1.1;
+  const low = s.low52 && s.low52 > 0 ? s.low52 : p * 0.75;
+  const bull12 = t;
+  const base12 = (p + t) / 2;
+  const cons12 = Math.min(low, p * 0.98);
+  const k = months === 6 ? 0.45 : 1;
+  return {
+    bull: p + (bull12 - p) * k,
+    base: p + (base12 - p) * k,
+    cons: p + (cons12 - p) * k,
+    bull12, base12, cons12
+  };
+}
+
+/* ---------- chart ---------- */
+let chartState = {period: store.period, horizon: store.horizon};
+
+function chartHTML(s){
+  const m = metrics(s);
+  if (!m){
+    return '<div class="chart-wrap" style="padding:18px 0;text-align:center;color:var(--sub);font-size:12.5px">' +
+      '직접 추가한 종목은 일별 시세 이력이 없어 차트를 그릴 수 없습니다.<br>52주 범위와 입력한 지표로만 평가합니다.</div>';
+  }
+  const ser = s.series, dates = DATA.dates;
+  const n = Math.min(chartState.period, ser.length);
+  const start = ser.length - n;
+  const closes = ser.slice(start);
+  const dts = dates.slice(start);
+  const m60 = m.m60.slice(start), m120 = m.m120.slice(start), m200 = m.m200.slice(start);
+  const sc = scenarios(s, chartState.horizon);
+
+  const W = 360, H = 208, PL = 40, PR = 6, PT = 14, PB = 22;
+  const iw = W - PL - PR, histW = iw * 0.68, futW = iw - histW;
+  let mn = Infinity, mx = -Infinity;
+  closes.forEach(v => { mn = Math.min(mn, v); mx = Math.max(mx, v); });
+  [m60, m120, m200].forEach(a => a.forEach(v => { if (v != null) { mn = Math.min(mn, v); mx = Math.max(mx, v); } }));
+  [sc.bull, sc.base, sc.cons].forEach(v => { mn = Math.min(mn, v); mx = Math.max(mx, v); });
+  const pad = (mx - mn) * 0.08 || 1;
+  mn -= pad; mx += pad;
+  const y = v => PT + (1 - (v - mn) / (mx - mn)) * (H - PT - PB);
+  const xh = i => PL + histW * i / Math.max(1, closes.length - 1);
+  const xf = t => PL + histW + futW * t;
+
+  const line = (arr, from) => {
+    let d = '', pen = false;
+    arr.forEach((v, i) => {
+      if (v == null) { pen = false; return; }
+      d += (pen ? 'L' : 'M') + xh(from + i).toFixed(1) + ' ' + y(v).toFixed(1);
+      pen = true;
+    });
+    return d;
+  };
+
+  let priceD = '';
+  closes.forEach((v, i) => { priceD += (i ? 'L' : 'M') + xh(i).toFixed(1) + ' ' + y(v).toFixed(1); });
+  const areaD = priceD + 'L' + xh(closes.length - 1).toFixed(1) + ' ' + (H - PB) + 'L' + xh(0).toFixed(1) + ' ' + (H - PB) + 'Z';
+
+  const ease = t => 1 - Math.pow(1 - t, 1.6);
+  const fut = (end) => {
+    let d = 'M' + xh(closes.length - 1).toFixed(1) + ' ' + y(closes[closes.length - 1]).toFixed(1);
+    for (let k = 1; k <= 12; k++){
+      const t = k / 12;
+      const v = closes[closes.length - 1] + (end - closes[closes.length - 1]) * ease(t);
+      d += 'L' + xf(t).toFixed(1) + ' ' + y(v).toFixed(1);
+    }
+    return d;
+  };
+  const bullD = fut(sc.bull), baseD = fut(sc.base), consD = fut(sc.cons);
+  let consRev = [];
+  for (let k = 12; k >= 0; k--){
+    const t = k / 12;
+    consRev.push([xf(t).toFixed(1), y(closes[closes.length - 1] + (sc.cons - closes[closes.length - 1]) * ease(t)).toFixed(1)]);
+  }
+  const bandD = bullD + consRev.map(p => 'L' + p[0] + ' ' + p[1]).join('') + 'Z';
+
+  // y grid
+  let grid = '', ylab = '';
+  for (let g = 0; g < 3; g++){
+    const val = mn + (mx - mn) * (g + 0.5) / 3;
+    const yy = y(val).toFixed(1);
+    grid += '<line x1="' + PL + '" y1="' + yy + '" x2="' + (W - PR) + '" y2="' + yy + '" stroke="var(--line)" stroke-width="1" stroke-dasharray="3 4"/>';
+    ylab += '<text x="' + (PL - 5) + '" y="' + yy + '" fill="var(--dim)" font-size="9" font-weight="700" text-anchor="end" dominant-baseline="middle">' + fmtAxis(val) + '</text>';
+  }
+  // x labels
+  let xlab = '';
+  const ticks = n > 160 ? 4 : 3;
+  for (let k = 0; k <= ticks; k++){
+    const i = Math.round((closes.length - 1) * k / ticks);
+    const dt = dts[i];
+    const label = dt ? dt.slice(5, 7).replace(/^0/, '') + '/' + dt.slice(8).replace(/^0/, '') : '';
+    const xx = xh(i);
+    const anchor = k === 0 ? 'start' : (k === ticks ? 'end' : 'middle');
+    xlab += '<text x="' + xx.toFixed(1) + '" y="' + (H - 6) + '" fill="var(--dim)" font-size="8.5" font-weight="700" text-anchor="' + anchor + '">' + label + '</text>';
+  }
+  const divX = (PL + histW).toFixed(1);
+  const futLbl = '<text x="' + (PL + histW + 5) + '" y="' + (H - 6) + '" fill="var(--accent)" font-size="9" font-weight="800">+' + (chartState.horizon === 6 ? '6M' : '12M') + '</text>';
+
+  return '' +
+  '<div class="chart-wrap" id="chartWrap">' +
+    '<svg viewBox="0 0 ' + W + ' ' + H + '" aria-label="주가와 이동평균, 시나리오 차트">' +
+      '<defs>' +
+        '<linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">' +
+          '<stop offset="0%" stop-color="var(--accent)" stop-opacity=".28"/>' +
+          '<stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>' +
+        '</linearGradient>' +
+        '<linearGradient id="gg" x1="0" y1="1" x2="1" y2="0">' +
+          '<stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#8bb7ff"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      grid + ylab +
+      '<line x1="' + divX + '" y1="' + PT + '" x2="' + divX + '" y2="' + (H - PB) + '" stroke="var(--line)" stroke-width="1"/>' +
+      '<path d="' + bandD + '" fill="var(--accent)" fill-opacity=".07"/>' +
+      '<path d="' + areaD + '" fill="url(#ag)"/>' +
+      '<path d="' + line(m200, 0) + '" fill="none" stroke="#22b8a6" stroke-width="1" stroke-opacity=".85"/>' +
+      '<path d="' + line(m120, 0) + '" fill="none" stroke="#a78bfa" stroke-width="1" stroke-opacity=".85"/>' +
+      '<path d="' + line(m60, 0) + '" fill="none" stroke="#f0a33a" stroke-width="1" stroke-opacity=".9"/>' +
+      '<path d="' + priceD + '" fill="none" stroke="var(--accent)" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round"/>' +
+      '<path d="' + baseD + '" fill="none" stroke="var(--sub)" stroke-width="1.3" stroke-dasharray="4 3"/>' +
+      '<path d="' + bullD + '" fill="none" stroke="var(--up)" stroke-width="1.3" stroke-dasharray="2 3"/>' +
+      '<path d="' + consD + '" fill="none" stroke="var(--down)" stroke-width="1.3" stroke-dasharray="2 3"/>' +
+      '<circle cx="' + xh(closes.length - 1).toFixed(1) + '" cy="' + y(closes[closes.length - 1]).toFixed(1) + '" r="2.6" fill="var(--accent)"/>' +
+      '<g id="cross" style="display:none"><line id="crossLine" y1="' + PT + '" y2="' + (H - PB) + '" stroke="var(--text)" stroke-width="1" stroke-opacity=".35"/>' +
+      '<circle id="crossDot" r="2.8" fill="var(--text)"/></g>' +
+      xlab + futLbl +
+      '<rect id="hit" x="0" y="0" width="' + (PL + histW).toFixed(1) + '" height="' + H + '" fill="transparent"/>' +
+    '</svg>' +
+    '<div class="tip" id="tip"></div>' +
+  '</div>' +
+  '<div class="legend">' +
+    '<span><i style="background:var(--accent)"></i>종가</span>' +
+    '<span><i style="background:#f0a33a"></i>60일선</span>' +
+    '<span><i style="background:#a78bfa"></i>120일선</span>' +
+    '<span><i style="background:#22b8a6"></i>200일선</span>' +
+    '<span><i style="background:var(--up)"></i>강세</span>' +
+    '<span><i style="background:var(--sub)"></i>기본</span>' +
+    '<span><i style="background:var(--down)"></i>보수</span>' +
+  '</div>' +
+  '<div class="mas">' +
+    '<div>MA20<b>' + fmt(m.ma20) + '</b></div>' +
+    '<div>MA60<b>' + fmt(m.ma60) + '</b></div>' +
+    '<div>MA120<b>' + fmt(m.ma120) + '</b></div>' +
+    '<div>MA200<b>' + fmt(m.ma200) + '</b></div>' +
+  '</div>';
+}
+
+function bindChart(s){
+  const wrap = $('#chartWrap'); if (!wrap) return;
+  const svg = $('svg', wrap), hit = $('#hit', wrap), tip = $('#tip', wrap);
+  if (!hit) return;
+  const m = metrics(s); if (!m) return;
+  const ser = s.series, dates = DATA.dates;
+  const n = Math.min(chartState.period, ser.length), start = ser.length - n;
+  const closes = ser.slice(start), dts = dates.slice(start);
+  // recompute y mapping identical to chartHTML
+  const W = 360, H = 208, PL = 40, PR = 6, PT = 14, PB = 22;
+  const iw = W - PL - PR, histW = iw * 0.68;
+  const sc = scenarios(s, chartState.horizon);
+  let mn = Infinity, mx = -Infinity;
+  closes.forEach(v => { mn = Math.min(mn, v); mx = Math.max(mx, v); });
+  [m.m60.slice(start), m.m120.slice(start), m.m200.slice(start)].forEach(a => a.forEach(v => { if (v != null) { mn = Math.min(mn, v); mx = Math.max(mx, v); } }));
+  [sc.bull, sc.base, sc.cons].forEach(v => { mn = Math.min(mn, v); mx = Math.max(mx, v); });
+  const pad = (mx - mn) * 0.08 || 1; mn -= pad; mx += pad;
+  const yy = v => PT + (1 - (v - mn) / (mx - mn)) * (H - PT - PB);
+  const xh = i => PL + histW * i / Math.max(1, closes.length - 1);
+
+  const move = ev => {
+    const r = svg.getBoundingClientRect();
+    const px = (ev.clientX - r.left) / r.width * W;
+    let i = Math.round((px - PL) / histW * (closes.length - 1));
+    i = clamp(i, 0, closes.length - 1);
+    const cx = xh(i), cy = yy(closes[i]);
+    const cross = $('#cross', wrap); cross.style.display = '';
+    $('#crossLine', wrap).setAttribute('x1', cx); $('#crossLine', wrap).setAttribute('x2', cx);
+    $('#crossDot', wrap).setAttribute('cx', cx); $('#crossDot', wrap).setAttribute('cy', cy);
+    const d = dts[i] || '';
+    tip.textContent = d.slice(0, 4) + '.' + d.slice(5, 7) + '.' + d.slice(8) + '  ' + fmt(closes[i]) + '원';
+    tip.classList.add('on');
+    const left = clamp(cx / W * r.width - 60, 0, r.width - 130);
+    tip.style.left = left + 'px';
+    tip.style.top = '0px';
+  };
+  const leave = () => { tip.classList.remove('on'); const c = $('#cross', wrap); if (c) c.style.display = 'none'; };
+  hit.addEventListener('pointermove', move);
+  hit.addEventListener('pointerdown', move);
+  hit.addEventListener('pointerleave', leave);
+}
+
+/* ---------- render ---------- */
+function renderMarket(){
+  const k = DATA.market.kospi, q = DATA.market.kosdaq;
+  const item = (nm, o) => '<div class="mkt-item"><div class="nm">' + nm + '</div>' +
+    '<div class="v num">' + fmt2(o.v) + '</div>' +
+    '<div class="c ' + cls(o.chg) + ' num">' + (o.chg > 0 ? '▲ ' : o.chg < 0 ? '▼ ' : '') + pctS(o.chg) + '</div></div>';
+  $('#marketCard').innerHTML =
+    '<div class="card-h"><h2>오늘의 시장</h2><span class="hint">' + DATA.asOfLabel + '</span></div>' +
+    '<div class="mkt">' + item('코스피', k) + item('코스닥', q) + '</div>' +
+    '<div class="breadth"><span>코스피 상승 ' + k.up + ' · 하락 ' + k.down + '</span>' +
+      '<span>외국인 ' + (k.foreign > 0 ? '+' : '') + fmt(k.foreign) + '억</span>' +
+      '<span>기관 +' + fmt(k.inst) + '억</span></div>' +
+    '<div class="note">' + esc(DATA.market.note) + '</div>' +
+    '<div class="badge"><span class="dot"></span><span>참고용 분석 시뮬레이터 · 투자 권유 아닙니다. 점수·시나리오는 규칙 기반 계산입니다.</span></div>';
+}
+
+function renderChips(){
+  const list = allStocks();
+  const html = list.map(s => {
+    const chg = s.chg != null ? s.chg : 0;
+    return '<button class="chip' + (current && s.code === current.code ? ' on' : '') + '" data-code="' + s.code + '">' +
+      esc(s.name) + '<small class="num ' + (current && s.code === current.code ? '' : cls(chg)) + '">' + pctS(chg) + '</small></button>';
+  }).join('') + '<button class="chip add" id="addChip">＋ 종목</button>';
+  $('#chips').innerHTML = html;
+  Array.from($('#chips').querySelectorAll('.chip[data-code]')).forEach(b => {
+    b.addEventListener('click', () => { selectStock(b.getAttribute('data-code')); });
+  });
+  const add = $('#addChip'); if (add) add.addEventListener('click', toggleAddPanel);
+  const on = $('#chips .chip.on');
+  if (on){ const bar = $('#chips'); bar.scrollLeft = Math.max(0, on.offsetLeft - 46); }
+}
+
+function selectStock(code){
+  const s = findStock(code); if (!s) return;
+  current = s; store.sel = code; persist();
+  renderChips(); renderView();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function rangeBar(s){
+  const p = s.price, hi = s.high52, lo = s.low52;
+  if (!hi || !lo || hi <= lo) return '';
+  const pos = clamp((p - lo) / (hi - lo) * 100, 0, 100);
+  return '<div class="range"><div class="range-bar"><span class="range-mark" style="left:calc(' + pos.toFixed(1) + '% - 1.5px)"></span></div>' +
+    '<div class="range-l"><span>52주 최저 ' + fmt(lo) + '</span><span>현재 ' + pos.toFixed(0) + '% 위치</span><span>최고 ' + fmt(hi) + '</span></div></div>';
+}
+
+function renderView(){
+  const s = current; if (!s) return;
+  const sc = scoreOf(s), m = metrics(s);
+  const chg = s.chg != null ? s.chg : 0;
+  const p = s.price;
+
+  const head =
+  '<section class="card">' +
+    '<div class="head"><div><div class="nm">' + esc(s.name) + '</div>' +
+      '<div class="meta">' + (s.custom && s.code.indexOf('USER-') === 0 ? '직접 추가 종목' : esc(s.code) + (s.sector ? ' · ' + esc(s.sector) : '')) + '</div></div>' +
+      '<div class="meta">' + esc(DATA.asOfShort) + ' 종가</div></div>' +
+    '<div class="price-row"><div class="price num">' + fmt(p) + '<span class="won">원</span></div>' +
+      '<div class="chg ' + cls(chg) + ' num">' + (chg > 0 ? '▲ ' : chg < 0 ? '▼ ' : '– ') + Math.abs(chg).toFixed(2) + '%</div></div>' +
+    rangeBar(s) +
+    '<div class="kv">' +
+      '<div><div class="k">PER</div><div class="v num">' + (s.per == null ? '-' : s.per.toFixed(2)) + '</div></div>' +
+      '<div><div class="k">PBR</div><div class="v num">' + (s.pbr == null ? '-' : s.pbr.toFixed(2)) + '</div></div>' +
+      '<div><div class="k">배당률</div><div class="v num">' + (s.div == null ? '-' : s.div.toFixed(2) + '%') + '</div></div>' +
+      '<div><div class="k">시총</div><div class="v num">' + (s.mktcap == null ? '-' : s.mktcap + '조') + '</div></div>' +
+    '</div>' +
+    (s.custom ? '<div class="del"><button class="btn danger" id="delBtn">이 종목 삭제</button></div>' : '') +
+  '</section>';
+
+  const trendPct = sc.trend / 35 * 100, valPct = sc.value / 30 * 100, divPct = sc.div / 20 * 100, rsiPct = sc.rsi / 15 * 100;
+  const rsiText = m && m.rsi != null ? ('RSI ' + m.rsi.toFixed(1) + ' · ' + (m.rsi <= 30 ? '과매도 — 반등 확인 후 접근' : m.rsi <= 45 ? '조정 구간 — 중장기 매수 관점 유리' : m.rsi <= 60 ? '중립' : m.rsi <= 70 ? '상승 과열 구간' : '과매수 — 추격 매수 주의')) : 'RSI 데이터 없음';
+  const score =
+  '<section class="card">' +
+    '<div class="card-h"><h2>중장기 시그널 스코어</h2><span class="hint">100점 만점</span></div>' +
+    '<div class="score-top">' +
+      '<div class="gauge-wrap">' +
+        '<svg class="gauge" viewBox="0 0 120 120"><defs><linearGradient id="gg2" x1="0" y1="1" x2="1" y2="0">' +
+          '<stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#8bb7ff"/></linearGradient></defs>' +
+          '<circle class="bg" cx="60" cy="60" r="52"/>' +
+          '<circle class="fg" cx="60" cy="60" r="52" stroke="url(#gg2)" stroke-dasharray="' + (sc.total / 100 * 326.7).toFixed(1) + ' 326.7" transform="rotate(-90 60 60)"/>' +
+        '</svg>' +
+        '<div class="gauge-txt"><b class="num">' + sc.total + '</b><span>SCORE</span></div>' +
+      '</div>' +
+      '<div class="verdict"><span class="pill ' + sc.verdict + '">' + sc.verdictText + (sc.partial ? ' · 부분 평가' : '') + '</span>' +
+        '<p>' + esc(s.summary || '') + '</p></div>' +
+    '</div>' +
+    '<div class="rows">' +
+      '<div><div class="row-h"><span>추세 <em>60·120·200일선</em></span><span class="num">' + Math.round(sc.trend) + ' / 35</span></div>' +
+        '<div class="bar t"><i style="width:' + trendPct.toFixed(1) + '%"></i></div>' +
+        '<p class="row-p">' + esc(sc.trendText) + (m ? ' · 종가 ' + fmt(p) + '원' : '') + '</p></div>' +
+      '<div><div class="row-h"><span>밸류에이션 <em>PER·PBR</em></span><span class="num">' + Math.round(sc.value) + ' / 30</span></div>' +
+        '<div class="bar"><i style="width:' + valPct.toFixed(1) + '%"></i></div>' +
+        '<p class="row-p">PER ' + (s.per == null ? '-' : s.per.toFixed(2) + '배') + (s.peerPer ? ' (업종 중앙 ' + s.peerPer.toFixed(2) + '배)' : '') +
+        ' · PBR ' + (s.pbr == null ? '-' : s.pbr.toFixed(2) + '배') + (s.peerPbr ? ' (업종 중앙 ' + s.peerPbr.toFixed(2) + '배)' : '') + '</p></div>' +
+      '<div><div class="row-h"><span>배당 매력</span><span class="num">' + Math.round(sc.div) + ' / 20</span></div>' +
+        '<div class="bar"><i style="width:' + divPct.toFixed(1) + '%"></i></div>' +
+        '<p class="row-p">배당수익률 ' + (s.div == null ? '-' : s.div.toFixed(2) + '%') + (s.dps ? ' · 주당 ' + fmt(s.dps) + '원' : '') + '</p></div>' +
+      '<div><div class="row-h"><span>RSI <em>14일</em></span><span class="num">' + Math.round(sc.rsi) + ' / 15</span></div>' +
+        '<div class="bar"><i style="width:' + rsiPct.toFixed(1) + '%"></i></div>' +
+        '<p class="row-p">' + rsiText + '</p></div>' +
+    '</div>' +
+    (s.target ? '<div class="target-line"><span>증권사 평균 목표주가</span><b class="num">' + fmt(s.target) + '원 ' +
+      '<span class="' + cls(s.target - p) + '">(' + pctS((s.target / p - 1) * 100) + ')</span></b></div>' : '') +
+    (sc.partial ? '<div class="scen-note">일부 지표가 없어 해당 항목은 중립값으로 계산했습니다.</div>' : '') +
+  '</section>';
+
+  const chart =
+  '<section class="card">' +
+    '<div class="card-h"><h2>추세 · 시나리오 차트</h2><span class="hint">일별 종가</span></div>' +
+    '<div class="seg" id="periodSeg">' +
+      [['3개월', 63], ['6개월', 126], ['1년', 245]].map(o =>
+        '<button data-p="' + o[1] + '" class="' + (chartState.period === o[1] ? 'on' : '') + '">' + o[0] + '</button>').join('') +
+    '</div>' +
+    chartHTML(s) +
+    '<div class="seg small" id="horizonSeg" style="margin-top:14px">' +
+      [['시나리오 6개월', 6], ['시나리오 12개월', 12]].map(o =>
+        '<button data-h="' + o[1] + '" class="' + (chartState.horizon === o[1] ? 'on' : '') + '">' + o[0] + '</button>').join('') +
+    '</div>' +
+    '<div class="scen">' + scenRows(s) + '</div>' +
+    '<div class="scen-note">가정: ' + (s.target ? '<b>강세</b> = 증권사 평균 목표주가 도달' : '<b>강세</b> = 현재가 +10% 가정') + ', <b>기본</b> = 목표가 상승여력의 절반 실현, <b>보수</b> = 52주 최저가 재방문. 6개월 값은 12개월 경로의 45% 진행으로 계산했습니다. 예측이 아닌 가정입니다.</div>' +
+  '</section>';
+
+  const pos = store.pos[s.code] || {avg: '', qty: ''};
+  const calc =
+  '<section class="card">' +
+    '<div class="card-h"><h2>내 평단가 계산기</h2><span class="hint">자동 저장</span></div>' +
+    '<div class="calc-in">' +
+      '<div class="field"><label for="avgIn">평균 단가(원)</label><input id="avgIn" type="number" inputmode="decimal" placeholder="예: 210000" value="' + (pos.avg || '') + '"></div>' +
+      '<div class="field"><label for="qtyIn">보유 수량(주)</label><input id="qtyIn" type="number" inputmode="numeric" placeholder="예: 30" value="' + (pos.qty || '') + '"></div>' +
+    '</div>' +
+    '<div class="calc-out" id="calcOut"></div>' +
+    '<div class="pnl" id="pnlOut"></div>' +
+    '<div class="help">입력값은 이 기기에만 저장됩니다. 세금·수수료는 반영하지 않았습니다.</div>' +
+  '</section>';
+
+  const checks = store.checks[s.code] || CHECKLIST.map(() => false);
+  const memo = store.memo[s.code] || {goal: '', text: ''};
+  const memoCard =
+  '<section class="card">' +
+    '<div class="card-h"><h2>체크리스트 &amp; 메모</h2><span class="hint">종목별 저장</span></div>' +
+    CHECKLIST.map((c, i) => '<label class="check"><input type="checkbox" data-i="' + i + '"' + (checks[i] ? ' checked' : '') + '><span>' + esc(c) + '</span></label>').join('') +
+    '<div class="goal"><input id="goalIn" type="number" inputmode="decimal" placeholder="목표가 (원)" value="' + (memo.goal || '') + '"><span id="goalHint">' + goalHint(memo.goal, p) + '</span></div>' +
+    '<textarea id="memoIn" placeholder="매수 근거, 분할 계획, 손절 기준 등을 적어두세요.">' + esc(memo.text || '') + '</textarea>' +
+    '<div class="saved" id="savedHint"></div>' +
+  '</section>';
+
+  const news =
+  '<section class="card">' +
+    '<div class="card-h"><h2>핵심 모멘텀 · 뉴스</h2><span class="hint">' + esc(DATA.asOfShort) + '</span></div>' +
+    '<div class="news"><ul>' + (s.news || []).map(n => '<li><span class="tag">' + esc(n.tag) + '</span><p>' + esc(n.text) + '</p></li>').join('') + '</ul></div>' +
+  '</section>';
+
+  $('#view').innerHTML = head + score + chart + calc + memoCard + news;
+  bindChart(s);
+  bindCalc(s);
+  bindMemo(s);
+
+  Array.from($('#periodSeg').children).forEach(b => b.addEventListener('click', () => {
+    chartState.period = Number(b.getAttribute('data-p')); store.period = chartState.period; persist(); renderView();
+  }));
+  Array.from($('#horizonSeg').children).forEach(b => b.addEventListener('click', () => {
+    chartState.horizon = Number(b.getAttribute('data-h')); store.horizon = chartState.horizon; persist(); renderView();
+  }));
+  const del = $('#delBtn');
+  if (del) del.addEventListener('click', () => {
+    if (!confirm(s.name + ' 종목을 목록에서 삭제할까요?')) return;
+    store.custom = store.custom.filter(x => x.code !== s.code);
+    delete store.pos[s.code]; delete store.memo[s.code]; delete store.checks[s.code];
+    persist();
+    current = BASE[0]; store.sel = BASE[0].code; persist(); renderChips(); renderView();
+  });
+}
+
+const CHECKLIST = [
+  '실적·업황 사이클이 바닥을 지나고 있다고 판단했다',
+  'PER·PBR이 역사적 저구간이거나 업종 대비 낮다',
+  '배당·자사주 등 주주환원이 유지될 수 있다',
+  '60·120·200일선 배열이 개선되는지 확인했다',
+  '3회 이상 분할 매수 계획과 손절 기준을 정했다'
+];
+
+function goalHint(goal, price){
+  const g = Number(goal);
+  if (!g) return '미설정';
+  return '현재가 대비 ' + pctS((g / price - 1) * 100);
+}
+
+function scenRows(s){
+  const a = scenarios(s, 6), b = scenarios(s, 12);
+  const row = (nm, v6, v12, color) =>
+    '<div class="scen-row"><span class="n" style="color:' + color + '">' + nm + '</span>' +
+      '<span class="p num">' + fmt(v6) + '<small class="' + cls(v6 - s.price) + '">6개월 ' + pctS((v6 / s.price - 1) * 100) + '</small></span>' +
+      '<span class="p num">' + fmt(v12) + '<small class="' + cls(v12 - s.price) + '">12개월 ' + pctS((v12 / s.price - 1) * 100) + '</small></span></div>';
+  return row('강세', a.bull, b.bull, 'var(--up)') + row('기본', a.base, b.base, 'var(--sub)') + row('보수', a.cons, b.cons, 'var(--down)');
+}
+
+function bindCalc(s){
+  const avgIn = $('#avgIn'), qtyIn = $('#qtyIn');
+  const calc = () => {
+    const avg = Number(avgIn.value), qty = Number(qtyIn.value);
+    store.pos[s.code] = {avg: avgIn.value, qty: qtyIn.value};
+    persist();
+    const out = $('#calcOut'), pnl = $('#pnlOut');
+    if (!avg || !qty){
+      out.innerHTML = '<div><div class="k">평가금액</div><div class="v" style="color:var(--dim)">-</div></div>' +
+        '<div><div class="k">평가손익</div><div class="v" style="color:var(--dim)">-</div></div>' +
+        '<div><div class="k">수익률</div><div class="v" style="color:var(--dim)">-</div></div>';
+      pnl.innerHTML = '<div class="pnl-row empty"><span>평단가와 수량을 입력하면 시나리오 손익이 계산됩니다</span></div>';
+      return;
+    }
+    const invested = avg * qty, value = s.price * qty, pl = value - invested, r = (s.price / avg - 1) * 100;
+    out.innerHTML =
+      '<div><div class="k">평가금액</div><div class="v num">' + fmt(value) + '</div></div>' +
+      '<div><div class="k">평가손익</div><div class="v num ' + cls(pl) + '">' + (pl > 0 ? '+' : '') + fmt(pl) + '</div></div>' +
+      '<div><div class="k">수익률</div><div class="v num ' + cls(pl) + '">' + pctS(r) + '</div></div>';
+    const a = scenarios(s, 6), b = scenarios(s, 12);
+    const line = (nm, price, color) => {
+      const v = price * qty, d = v - invested;
+      return '<div class="pnl-row"><span style="color:' + color + '">' + nm + ' ' + fmt(price) + '원</span>' +
+        '<span class="num ' + cls(d) + '">' + (d > 0 ? '+' : '') + fmt(d) + ' (' + pctS((price / avg - 1) * 100) + ')</span></div>';
+    };
+    pnl.innerHTML =
+      line('강세 6개월', a.bull, 'var(--up)') + line('기본 6개월', a.base, 'var(--sub)') + line('보수 6개월', a.cons, 'var(--down)') +
+      line('강세 12개월', b.bull, 'var(--up)') + line('기본 12개월', b.base, 'var(--sub)') + line('보수 12개월', b.cons, 'var(--down)');
+  };
+  avgIn.addEventListener('input', calc);
+  qtyIn.addEventListener('input', calc);
+  calc();
+}
+
+function bindMemo(s){
+  const checks = store.checks[s.code] || CHECKLIST.map(() => false);
+  Array.from(document.querySelectorAll('.check input')).forEach(inp => {
+    inp.addEventListener('change', () => {
+      const i = Number(inp.getAttribute('data-i'));
+      const arr = store.checks[s.code] || CHECKLIST.map(() => false);
+      arr[i] = inp.checked; store.checks[s.code] = arr; persist(); flash();
+    });
+  });
+  const goal = $('#goalIn'), memo = $('#memoIn'), hint = $('#savedHint');
+  let t = null;
+  const save = () => {
+    store.memo[s.code] = {goal: goal.value, text: memo.value}; persist(); flash();
+  };
+  goal.addEventListener('input', () => { $('#goalHint').textContent = goalHint(goal.value, s.price); clearTimeout(t); t = setTimeout(save, 400); });
+  memo.addEventListener('input', () => { clearTimeout(t); t = setTimeout(save, 400); });
+}
+function flash(){
+  const h = $('#savedHint'); if (!h) return;
+  h.textContent = '저장됨 ✓';
+  clearTimeout(flash._t);
+  flash._t = setTimeout(() => { if (h) h.textContent = ''; }, 1400);
+}
+
+/* ---------- add stock ---------- */
+let addOpen = false;
+function toggleAddPanel(){
+  addOpen = !addOpen;
+  if (!addOpen){ $('#addPanel').innerHTML = ''; return; }
+  $('#addPanel').innerHTML =
+  '<section class="card"><div class="card-h"><h2>종목 직접 추가</h2><span class="hint">이 기기에만 저장</span></div>' +
+    '<div class="form">' +
+      '<div class="row2"><input id="fName" placeholder="종목명 (예: 기아)"><input id="fCode" placeholder="종목코드 (선택)"></div>' +
+      '<div class="row2"><input id="fPrice" type="number" placeholder="현재가(원)"><input id="fDiv" type="number" step="0.01" placeholder="배당수익률(%)"></div>' +
+      '<div class="row2"><input id="fPer" type="number" step="0.01" placeholder="PER"><input id="fPbr" type="number" step="0.01" placeholder="PBR"></div>' +
+      '<div class="row2"><input id="fHigh" type="number" placeholder="52주 최고가"><input id="fLow" type="number" placeholder="52주 최저가"></div>' +
+      '<div class="err" id="fErr"></div>' +
+      '<div class="acts"><button class="btn ghost" id="fCancel">취소</button><button class="btn" id="fSave">추가</button></div>' +
+    '</div></section>';
+  $('#fCancel').addEventListener('click', () => { addOpen = false; $('#addPanel').innerHTML = ''; });
+  $('#fSave').addEventListener('click', () => {
+    const name = $('#fName').value.trim();
+    const price = Number($('#fPrice').value);
+    const codeV = $('#fCode').value.trim();
+    const err = $('#fErr');
+    if (!name){ err.textContent = '종목명을 입력해 주세요.'; return; }
+    if (!price){ err.textContent = '현재가를 입력해 주세요.'; return; }
+    if (allStocks().some(x => x.name === name)){ err.textContent = '이미 목록에 있는 종목명입니다.'; return; }
+    if (codeV && allStocks().some(x => x.code === codeV)){ err.textContent = '이미 목록에 있는 종목코드입니다.'; return; }
+    const perV = $('#fPer').value === '' ? null : Number($('#fPer').value);
+    const pbrV = $('#fPbr').value === '' ? null : Number($('#fPbr').value);
+    const divV = $('#fDiv').value === '' ? null : Number($('#fDiv').value);
+    const hiV = $('#fHigh').value === '' ? null : Number($('#fHigh').value);
+    const loV = $('#fLow').value === '' ? null : Number($('#fLow').value);
+    const item = {
+      code: (codeV || 'USER-' + Date.now()), name: name, sector: '직접 추가', custom: true,
+      price: price, chg: 0, per: perV, pbr: pbrV, div: divV, dps: null, mktcap: null,
+      high52: hiV || price, low52: loV || price, target: null, series: null,
+      summary: '직접 추가한 종목입니다. 입력한 지표만으로 점수를 계산합니다.',
+      news: [{tag: '안내', text: '직접 추가 종목은 시세 자동 갱신이 없습니다. 값을 바꾸려면 삭제 후 다시 추가해 주세요.'}]
+    };
+    store.custom.push(item); persist();
+    addOpen = false; $('#addPanel').innerHTML = ''; selectStock(item.code);
+  });
+}
+
+/* ---------- theme ---------- */
+function applyTheme(){
+  document.documentElement.setAttribute('data-theme', store.theme);
+  $('#themeBtn').textContent = store.theme === 'dark' ? '☀️' : '🌙';
+}
+$('#themeBtn').addEventListener('click', () => {
+  store.theme = store.theme === 'dark' ? 'light' : 'dark'; persist(); applyTheme();
+});
+$('#resetBtn').addEventListener('click', () => {
+  if (!confirm('이 기기에 저장된 평단가·메모·체크리스트·추가 종목을 모두 지울까요?')) return;
+  try { localStorage.removeItem(LSKEY); } catch (e) {}
+  location.reload();
+});
+
+/* ---------- boot ---------- */
+applyTheme();
+renderMarket();
+current = findStock(store.sel) || BASE[0];
+store.sel = current.code;
+renderChips();
+renderView();
+</script>
+</body>
+</html>
